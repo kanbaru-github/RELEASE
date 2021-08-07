@@ -56,6 +56,8 @@ https://app.diagrams.net/#G1VQVFU7tM3FTUSMxdp7zBOeUfknkuH0Ah
 - ワイヤーフレーム
 https://app.diagrams.net/#G1a59JGzHrP5RTJXfoelzIiGPC_p-sotZH
 - テーブル定義書https://docs.google.com/spreadsheets/d/103j_yqMhp5Eek5g7XU9HqTWFHqMS3dVDD85aAfrw__4/edit#gid=0
+- アプリケーション詳細再設計
+https://docs.google.com/spreadsheets/d/1dniXNADwXerGMXdk8vQyJR2q5UnP4J4-8zGfhrj3H1c/edit#gid=2133469642
 
 
 ## チャレンジ要素一覧
