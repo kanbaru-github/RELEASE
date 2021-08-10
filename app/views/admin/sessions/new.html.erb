@@ -1,0 +1,30 @@
+<div class="container mt-5">
+
+  <div class="row">
+    <div class="col-xs-6 mx-auto"><h2>管理者ログイン</h2></div>
+  </div>
+
+  <%= form_with model: @admin, url: admin_session_path, class:"contact-form" ,local: true do |f| %>
+    <%= render "admin/shared/error_messages", resource: resource %>
+
+    <div class="row mt-5">
+      <div class="col-8 mx-auto col-lg-5 form-field">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input-text form-js-input" %>
+        <!--email_field自体をクリックしなくてもlabelで選択できる-->
+        <label for="staticEmail" class="label">Email</label>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-8 mx-auto col-lg-5 form-field">
+        <%= f.password_field :password, autocomplete: "current-password", class:"input-text form-js-input" %>
+        <label for="inputPassword" class="label">Password</label>
+      </div>
+    </div>
+
+    <div class="row mt-5 mb-5 form-field">
+      <%= f.submit "Login", class:"col-3 mx-auto col-lg-2 submit-btn" %>
+    </div>
+
+  <% end %>
+</div>

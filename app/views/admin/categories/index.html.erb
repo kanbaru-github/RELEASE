@@ -1,0 +1,39 @@
+<%= render 'layouts/errors', obj: @category %>
+
+<div class="container">
+
+  <div class="row mt-5">
+      <h5 class="two-line-heading">カテゴリー一覧・追加</h5>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col">
+      <%= form_with model: @category, url: admin_categories_path, class:"form-inline", local: true do |f| %>
+        <%= f.label :name, "カテゴリー名", class:"form-group ml-1" %>
+        <%= f.text_field :name, class:"form-group ml-5", placeholder: "カテゴリー名" %>
+        <%= f.submit '追加', class:'btn btn-success' %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-md-5">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>カテゴリー名</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @categories.each do |category| %>
+            <tr>
+              <td><%= category.name %></td>
+              <td class="text-center"><%= link_to "編集", edit_admin_category_path(category.id), class:"btn btn-secondary" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

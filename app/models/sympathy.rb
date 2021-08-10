@@ -1,0 +1,2 @@
+class Sympathy < ApplicationRecord
+end

@@ -10,6 +10,45 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+        <% if admin_signed_in? %>
+          <%= link_to admin_posts_path do %><%= image_tag 'logo.png', size:"100x100" %><% end %>
+        <% else %>
+          <%= link_to root_path do %><%= image_tag 'logo.png', size:"100x100" %><% end %>
+        <% end %>
+        <% if admin_signed_in? %>
+          <ul class="flex">
+            <li><%= link_to '投稿一覧', admin_posts_path %></li>
+            <li><%= link_to '会員一覧', admin_customers_path %></li>
+            <li><%= link_to 'カテゴリー一覧', admin_categories_path %></li>
+            <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
+          </ul>
+        <% elsif customer_signed_in? %>
+          <ul class="flex">
+            <li><%= link_to 'ABOUT', homes_about_path %></li>
+            <li><%= link_to '投稿一覧', posts_path %></li>
+            <li><%= link_to 'マイページ', mypage_path %></li>
+            <li><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %></li>
+          </ul>
+        <% else %>
+          <ul class="flex">
+            <li><%= link_to 'ABOUT', homes_about_path %></li>
+            <li><%= link_to '新規登録', new_customer_registration_path %></li>
+            <li><%= link_to 'ログイン', new_customer_session_path %></li>
+          </ul>
+        <% end %>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer>お問合せはこちら</footer>
+
   </body>
+
 </html>

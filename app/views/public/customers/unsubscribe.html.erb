@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-6 text-center font-weight-bold" id="quit_confirm_underline">本当に退会しますか？</div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col text-center">
+      退会すると、会員登録情報や</br>
+      これまでの投稿履歴が閲覧できなくなります。</br>
+      退会する場合は、「退会する」をクリックしてください。
+    </div>
+  </div>
+
+  <div class="row d-flex justify-content-center mt-5 mb-5">
+    <%= link_to "マイページに戻る", mypage_path, class: "btn btn-primary" %>
+		<%= link_to "退会する", withdraw_customer_path, method: :patch, "data-confirm" => "OKを押すと退会処理がされます。本当によろしいですか？", class: "btn btn-danger" %>
+  </div>
+</div>

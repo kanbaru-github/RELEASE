@@ -14,3 +14,18 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+// 入力フォーム
+//初回読み込み、リロード、ページ切り替えで動く。
+$(document).on('turbolinks:load',function(){
+  // キーが離されたときに発生
+  $('.form-js-input').on('keyup', function () {
+    if ($(this).val()) {
+      $(this).addClass('not-empty');
+      console.log('true')
+    } else {
+      $(this).removeClass('not-empty');
+      console.log('false')
+    }
+  });
+});
