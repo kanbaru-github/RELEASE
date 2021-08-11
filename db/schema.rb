@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_08_103319) do
+ActiveRecord::Schema.define(version: 2021_08_11_024033) do
 
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -38,10 +38,11 @@ ActiveRecord::Schema.define(version: 2021_08_08_103319) do
   end
 
   create_table "contacts", force: :cascade do |t|
-    t.integer "customer_id"
-    t.string "email"
-    t.integer "subject"
-    t.text "message"
+    t.string "name", null: false
+    t.string "email", null: false
+    t.string "phone_number", null: false
+    t.integer "subject", default: 0, null: false
+    t.text "message", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -59,18 +60,18 @@ ActiveRecord::Schema.define(version: 2021_08_08_103319) do
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
-  create_table "mutes", force: :cascade do |t|
-    t.integer "mute_customer_id"
-    t.integer "muted_customer_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "posts", force: :cascade do |t|
     t.integer "customer_id"
     t.integer "category_id"
     t.string "image_id"
     t.text "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "muter_id"
+    t.integer "muted_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

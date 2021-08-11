@@ -47,7 +47,16 @@
       <%= yield %>
     </main>
 
-    <footer>お問合せはこちら</footer>
+    <footer>
+      <div class="container"></div>
+        <div class="row">
+        <% if admin_signed_in? %>
+          <p>管理者</p>
+        <% else %>
+          <p>お問合せは</p><%= link_to "こちら",new_contact_path %>
+        <% end %>
+      </div>
+    </footer>
 
   </body>
 

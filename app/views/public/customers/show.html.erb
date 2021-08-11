@@ -17,6 +17,10 @@
           <th>メールアドレス</th>
           <th class="w-75"><%= @customer.email %><%= link_to "編集する", edit_customer_path, class:"btn btn-success float-right" %></td>
         </tr>
+        <tr>
+          <th>非表示にした投稿</th>
+          <th><%= link_to @customer.mutings.count, customer_mutings_path(@customer) %></th>
+        </tr>
       </table>
     </div>
   </div>

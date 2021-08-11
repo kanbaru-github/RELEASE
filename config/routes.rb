@@ -17,17 +17,25 @@ Rails.application.routes.draw do
   scope module: :public do
     root 'homes#top'
     get "homes/about" => "homes#about"
-    resources :posts
+    resources :posts do
+      resource :sympathies, only: [:create, :destroy]
+      resource :cheers, only: [:create, :destroy]
+    end
     resources :customers, only: [:show, :edit, :update] do
       get "search", to: "customers#search"
-      resource :mutes, only: [:create, :destroy]
-      get 'followings', to: 'relationships#followings', as: 'followings'
-      get 'followers', to:  'relationships#followers', as: 'followers'
+      resource :relationships, only: [:create, :destroy]
+      get 'mutings', to: 'relationships#mutings', as: 'mutings'
+      get 'muters', to:  'relationships#muters', as: 'muters'
     end
     get 'customers/mypage' => 'customers#show', as: 'mypage'
     get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'confirm_unsubscribe'
     patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw_customer'
     put 'customers/withdraw' => 'customers#withdraw'
+    resources :contacts, only: [:new, :create]
+    post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
+    post 'contacts/back', to: 'contacts#back', as: 'back'
+    get 'thanks', to: 'contacts#thanks', as: 'thanks'
+
   end
 
 end

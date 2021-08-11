@@ -1,0 +1,10 @@
+<% if post.cheered_by?(current_customer) %>
+  <%#= link_to post.cheers.count, post_cheers_path(post), method: :delete, remote: true %>
+  <%= link_to post_cheers_path(post), method: :delete, remote: true do %>
+    <%= image_tag("cheer.jpeg", size:"50x50") %>
+    <%= post.cheers.count %>
+  <% end %>
+<% else %>
+  <%= link_to post.cheers.count, post_cheers_path(post), method: :post, remote: true %>
+<% end %>
+

@@ -1,23 +1,21 @@
 class Post < ApplicationRecord
 
+  attachment :image
+  
   belongs_to :customer
   belongs_to :category
-
-  attachment :image
 
   validates :text, presence: true
   validates :category, presence: true
 
   has_many :sympathies, dependent: :destroy
   def sympathied_by?(customer)
-    # このメソッドで、引数で渡されたユーザidが共感テーブル内に存在（exists?）するかどうかを調べる
-    # 存在していればtrue、存在していなければfalseを返すようにしています。
     sympathies.where(customer_id: customer.id).exists?
   end
 
   has_many :cheers, dependent: :destroy
   def cheered_by?(user)
-    cheers.where(user_id: user.id).exists?
+    cheers.where(customer_id: customer.id).exists?
   end
 
   scope :created_today, -> { where(created_at: Time.zone.now.all_day) } # 今日

@@ -5,6 +5,23 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.page(params[:page]).reverse_order
+    # current_customer.muting = [2, 3, 4]
+    @mute_posts = current_customer.mutings.each{ |mute|
+
+  @posts.select{ |posts| post != mute }
+    }
+    # binding.pry
+    @mute_post = current_customer.
+    # current_customer.muting = [1, 2, 3]
+    # sum = current_customer.muting.map{ |mute|
+    #         Post.where(user_id: mute)
+
+
+    # Post.where(customer_id: )
+
+    # @post = sum
+  end
+
   end
 
   def new
