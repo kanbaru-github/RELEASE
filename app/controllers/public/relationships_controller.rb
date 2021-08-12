@@ -15,6 +15,7 @@ class Public::RelationshipsController < ApplicationController
   def mutings
 		customer = Customer.find(params[:customer_id])
 		@customers = customer.mutings
+		@posts = Post.page(params[:page]).reverse_order.where.not(customer_id: params[:id])
   end
 
   def muters

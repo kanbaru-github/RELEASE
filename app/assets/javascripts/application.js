@@ -10,6 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
@@ -18,6 +19,7 @@
 // 入力フォーム
 //初回読み込み、リロード、ページ切り替えで動く。
 $(document).on('turbolinks:load',function(){
+  console.log("test")
   // キーが離されたときに発生
   $('.form-js-input').on('keyup', function () {
     if ($(this).val()) {

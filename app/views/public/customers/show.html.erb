@@ -12,14 +12,19 @@
 
   <div class="row mt-2">
     <div class="col-10">
-      <table class="table table-bordered">
+      <table class="table">
         <tr>
           <th>メールアドレス</th>
           <th class="w-75"><%= @customer.email %><%= link_to "編集する", edit_customer_path, class:"btn btn-success float-right" %></td>
         </tr>
         <tr>
-          <th>非表示にした投稿</th>
-          <th><%= link_to @customer.mutings.count, customer_mutings_path(@customer) %></th>
+          <th>非表示にした投稿数</th>
+          <th>
+            <%= link_to customer_mutings_path(@customer) do %>
+              <%= @customer.mutings.count %>
+              <h6>非表示にした投稿一覧へ</h6>
+            <% end %>
+          </th>
         </tr>
       </table>
     </div>

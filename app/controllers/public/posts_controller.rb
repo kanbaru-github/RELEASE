@@ -4,14 +4,15 @@ class Public::PostsController < ApplicationController
   before_action :ensure_correct_customer, only: [:edit, :update, :destroy]
 
   def index
-    @posts = Post.page(params[:page]).reverse_order
-    # current_customer.muting = [2, 3, 4]
-    @mute_posts = current_customer.mutings.each{ |mute|
+    @posts = Post.page(params[:page]).reverse_order.where.not(customer_id: params[:id])
+  #   @posts = Post.page(params[:page]).reverse_order
+  #   # current_customer.muting = [2, 3, 4]
+  #   @mute_posts = current_customer.mutings.each{ |mute|
 
-  @posts.select{ |posts| post != mute }
-    }
-    # binding.pry
-    @mute_post = current_customer.
+  # @posts.select{ |posts| post != mute }
+  #   }
+  #   # binding.pry
+  #   @mute_post = current_customer.
     # current_customer.muting = [1, 2, 3]
     # sum = current_customer.muting.map{ |mute|
     #         Post.where(user_id: mute)
@@ -20,7 +21,7 @@ class Public::PostsController < ApplicationController
     # Post.where(customer_id: )
 
     # @post = sum
-  end
+
 
   end
 

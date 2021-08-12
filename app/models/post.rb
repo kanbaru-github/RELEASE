@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
 
   attachment :image
-  
+
   belongs_to :customer
   belongs_to :category
 
@@ -14,7 +14,7 @@ class Post < ApplicationRecord
   end
 
   has_many :cheers, dependent: :destroy
-  def cheered_by?(user)
+  def cheered_by?(customer)
     cheers.where(customer_id: customer.id).exists?
   end
 
