@@ -13,23 +13,21 @@
         </thead>
         <tbody>
         <% @posts.each do |post| %>
-          <tr id="post_<%= post.id %>">
-            <th><%= post.created_at.strftime("%Y/%m/%d %H:%M:%S") %></th>
-            <th><%= attachment_image_tag(post, :image, :fill, 50, 50, fallback: "no-image.jpg") %></th>
-            <th><%= post.text %></th>
-            <% if post.customer == current_customer %>
-              <td><%= link_to '編集する', edit_post_path(post), class: "btn btn-sm btn-success" %></td>
-              <td><%= link_to '削除する', post_path(post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
-            <% else %>
-              <td class="sympathy-btn"><%= render "public/sympathies/sympathy-btn", post: post %></td>
-              <td class="cheer-btn"><%= render "public/cheers/cheer-btn", post: post %></td>
-              <% if current_customer.muting?(post.customer) %>
-                <td><%#= link_to "非表示を解除する", customer_relationships_path(post.customer.id), method: :delete, class: "btn btn-primary" %></td>
+          <% unless current_customer.muting?(post.customer) %>
+            <tr id="post_<%= post.id %>">
+              <th><%= post.created_at.strftime("%Y/%m/%d %H:%M:%S") %></th>
+              <th><%= attachment_image_tag(post, :image, :fill, 50, 50, fallback: "no-image.jpg") %></th>
+              <th><%= post.text %></th>
+              <% if post.customer == current_customer %>
+                <td><%= link_to '編集する', edit_post_path(post), class: "btn btn-sm btn-success" %></td>
+                <td><%= link_to '削除する', post_path(post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
               <% else %>
+                <td class="sympathy-btn"><%= render "public/sympathies/sympathy-btn", post: post %></td>
+                <td class="cheer-btn"><%= render "public/cheers/cheer-btn", post: post %></td>
                 <td><%= link_to "非表示にする", customer_relationships_path(post.customer.id), method: :post, class: "btn btn-success" %></td>
               <% end %>
-            <% end %>
-          </tr>
+            </tr>
+          <% end %>
         <% end %>
         </tbody>
       </table>

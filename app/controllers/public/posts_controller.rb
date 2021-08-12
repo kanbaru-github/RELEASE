@@ -5,6 +5,7 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.page(params[:page]).reverse_order.where.not(customer_id: params[:id])
+    #binding.irb
   #   @posts = Post.page(params[:page]).reverse_order
   #   # current_customer.muting = [2, 3, 4]
   #   @mute_posts = current_customer.mutings.each{ |mute|

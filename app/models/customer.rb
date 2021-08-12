@@ -25,11 +25,13 @@ class Customer < ApplicationRecord
   end
 
   def unmute(customer_id)
-    relationships.find_by(muted_id: customer_id).destroy
+    relationships.where(muted_id: customer_id).destroy_all
   end
 
   def muting?(customer)
-    relationships.include?(customer)
+    #relationships.include?(customer)
+    # ミュートしているidを
+    mutings.include?(customer)
   end
 
 end
