@@ -31,3 +31,15 @@ $(document).on('turbolinks:load',function(){
     }
   });
 });
+
+// トップページ
+// 要素を表示させるfunction
+function fadeIn(){
+    $('.js-fadeIn').each(function(i){
+        let delay = 100;  // 0.1秒ずつずれます。好きな秒数に調整してください。
+        $(this).delay(i * delay).queue(function(next){
+            $(this).addClass('show');
+            next();
+        });
+    })
+};

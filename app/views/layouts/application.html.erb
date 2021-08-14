@@ -14,29 +14,91 @@
       <nav class="navbar navbar-expand-lg">
         <div class="container">
         <% if admin_signed_in? %>
-          <%= link_to admin_posts_path do %><%= image_tag 'logo.png', size:"100x100" %><% end %>
+          <a href="admin_posts_path">
+            <%= image_tag 'logo.png', size:"350x100" %>
+          </a>
         <% else %>
-          <%= link_to root_path do %><%= image_tag 'logo.png', size:"100x100" %><% end %>
+          <a href="/">
+            <%= image_tag 'logo.png', size:"350x100" %>
+          </a>
+        <% end %>
+        <% if customer_signed_in? %>
+          <li class="list-unstyled">ようこそ、RELEASEへ！</li>
         <% end %>
         <% if admin_signed_in? %>
           <ul class="flex">
-            <li><%= link_to '投稿一覧', admin_posts_path %></li>
-            <li><%= link_to '会員一覧', admin_customers_path %></li>
-            <li><%= link_to 'カテゴリー一覧', admin_categories_path %></li>
-            <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
+            <li class="list-unstyled">
+              <%= link_to admin_posts_path, class: 'text-dark expand' do %>
+                <%= image_tag 'post.png', size:"20x20" %>
+                投稿一覧
+              <% end %>
+            </li>
+            <li class="list-unstyled">
+              <%= link_to admin_customers_path, class: 'text-dark expand' do %>
+                <%= image_tag 'customers.png', size:"20x20" %>
+                会員一覧
+              <% end %>
+            </li>
+            <li class="list-unstyled">
+              <%= link_to admin_categories_path, class: 'text-dark expand' do %>
+                <%= image_tag 'category.png', size:"20x20" %>
+                カテゴリー一覧
+              <% end %>
+            </li>
+            <li class="list-unstyled">
+              <%= link_to destroy_admin_session_path, class: 'text-dark expand' do %>
+                <%= image_tag 'log_out.png', size:"20x20" %>
+                ログアウト
+              <% end %>
+            </li>
           </ul>
         <% elsif customer_signed_in? %>
           <ul class="flex">
-            <li><%= link_to 'ABOUT', homes_about_path %></li>
-            <li><%= link_to '投稿一覧', posts_path %></li>
-            <li><%= link_to 'マイページ', mypage_path %></li>
-            <li><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %></li>
+            <li class="list-unstyled">
+              <%= link_to homes_about_path, class: 'text-dark expand' do %>
+                <%= image_tag 'about.png', size:"20x20" %>
+                ABOUT
+              <% end %>
+            </li>
+            <li class="list-unstyled">
+              <%= link_to posts_path, class: 'text-dark expand' do %>
+                <%= image_tag 'post.png', size:"20x20" %>
+                投稿一覧
+              <% end %>
+            </li>
+            <li class="list-unstyled">
+              <%= link_to mypage_path, class: 'text-dark expand' do %>
+                <%= image_tag 'my_page.png', size:"20x20" %>
+                ABOUT
+              <% end %>
+            </li>
+            <li class="list-unstyled">
+              <%= link_to destroy_customer_session_path, class: 'text-dark expand' do %>
+                <%= image_tag 'log_out.png', size:"20x20" %>
+                ログアウト
+              <% end %>
+            </li>
           </ul>
         <% else %>
           <ul class="flex">
-            <li><%= link_to 'ABOUT', homes_about_path %></li>
-            <li><%= link_to '新規登録', new_customer_registration_path %></li>
-            <li><%= link_to 'ログイン', new_customer_session_path %></li>
+            <li class="list-unstyled">
+              <%= link_to homes_about_path, class: 'text-dark expand' do %>
+                <%= image_tag 'about.png', size:"20x20" %>
+                ABOUT
+              <% end %>
+            </li>
+            <li class="list-unstyled">
+              <%= link_to new_customer_registration_path, class: 'text-dark expand' do %>
+                <%= image_tag 'sign_up', size:"20x20" %>
+                新規登録
+              <% end %>
+            </li>
+            <li class="list-unstyled">
+              <%= link_to new_customer_session_path, class: 'text-dark expand' do %>
+                <%= image_tag 'log_in.png', size:"20x20" %>
+                ABOUT
+              <% end %>
+            </li>
           </ul>
         <% end %>
         </div>
@@ -50,11 +112,17 @@
     <footer>
       <div class="container"></div>
         <div class="row">
-        <% if admin_signed_in? %>
-          <p>管理者</p>
-        <% else %>
-          <p>お問合せは</p><%= link_to "こちら",new_contact_path %>
-        <% end %>
+          <div class="mx-auto">
+          <% if admin_signed_in? %>
+            <p>管理者</p>
+          <% else %>
+            <%= link_to new_customer_session_path, class: 'text-dark expand' do %>
+              <%= image_tag 'contact.png', size:"20x20" %>
+                お問合せはこちら
+              <% end %>
+          <% end %>
+          </div>
+        </div>
       </div>
     </footer>
 

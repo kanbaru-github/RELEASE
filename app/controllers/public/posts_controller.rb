@@ -17,17 +17,18 @@ class Public::PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @category = Category.new
+    @categories = Category.all
   end
 
   def create
     @post = Post.new(post_params)
     @post.customer_id = current_customer.id
+
     if @post.save
       redirect_to posts_path, notice: '投稿しました！'
     else
-      @posts = Post.page(params[:page]).reverse_order
-      render :index
+      @categories = Category.all
+      render :new
     end
   end
 
@@ -50,7 +51,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:text, :category)
+    params.require(:post).permit(:text, :category_id)
   end
 
   def ensure_correct_customer

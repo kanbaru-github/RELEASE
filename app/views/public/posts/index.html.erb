@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container background">
 
   <div class="row">
     <h5 class="two-line-heading">ジャンル検索</h5>
@@ -48,6 +48,6 @@
         </tbody>
       </table>
       <%= paginate @posts %>
-      <%= link_to image_tag("new_post.jpeg", size:"50x50"), new_post_path %>
+      <a><%= link_to image_tag("new_post.jpeg", size:"50x50"), new_post_path, class: "expand" %></a>
   </div>
 </div>
