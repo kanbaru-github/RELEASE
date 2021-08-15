@@ -6,6 +6,17 @@ class Public::CustomersController < ApplicationController
   def show
     @customer = current_customer
     @posts = @customer.posts
+
+    @customer_posts = @customer.posts
+    @sympathies_count = 0
+    @customer_posts.each do |post|
+      @sympathies_count += post.sympathies.count
+    end
+    @cheers_count = 0
+    @customer_posts.each do |post|
+      @cheers_count += post.cheers.count
+    end
+
     @today_post =  @posts.created_today
     @yesterday_post = @posts.created_yesterday
     @this_week_post = @posts.created_this_week

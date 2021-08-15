@@ -33,6 +33,15 @@ footer {
   background-color: #ccc;
 }
 
+#top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}
+#top img {
+  width: 50px;
+}
+
 // header
 li{
   display: inline-block;
@@ -46,41 +55,68 @@ li{
   background-size: cover;
 }
 
-li{
-  opacity: 0;
+.top-message {
+  padding: 100px;
+  font-size: 80px;
+  text-align: center;
+  display: none;
+  color: #fff;
 }
-li.show{
-  transition-duration: 0.5s;
-  opacity: 1;
+
+.heading {
+  margin: 10px;
+  padding: 1rem 3rem;
+  color: #fff;
+  border-radius: 100vh;
+  background-image: -webkit-gradient(linear, right top, left top, from(#9be15d), to(#00e3ae));
+  background-image: -webkit-linear-gradient(right, #9be15d 0%, #00e3ae 100%);
+  background-image: linear-gradient(to left, #9be15d 0%, #00e3ae 100%);
 }
-// .top-bg {
-//   height: 1000px;
-//   /* 画像ファイルの指定 */
-//   background-image: url(top_bg.jpeg);
 
-//   /* 画像を常に天地左右の中央に配置 */
-//   background-position: center center;
+.category-seach{
+  float: left;
+  display: inline-flex;
+  margin: 5px;
+  padding: 10px;
+  background-color: #fff;
+}
 
-//   /* 画像をタイル状に繰り返し表示しない */
-//   background-repeat: no-repeat;
+.tag-heading {
+  position: relative;
+  display: inline-block;
+  height: 64px;
+  margin-left: 30px;
+  padding: 1rem 2rem 1rem 3rem;
+  color: #fff;
+  background: #fa4141;
+}
+.tag-heading:before {
+  position: absolute;
+  top: 0;
+  left: -30px;
+  content: '';
+  border-width: 32px 30px 32px 0;
+  border-style: solid;
+  border-color: transparent #fa4141 transparent transparent;
+}
+.tag-heading:after {
+  position: absolute;
+  top: calc(50% - 7px);
+  left: -10px;
+  width: 14px;
+  height: 14px;
+  content: '';
+  border-radius: 50%;
+  background: #fff;
+}
 
-//   /* コンテンツの高さが画像の高さより大きい時、動かないように固定 */
-//   background-attachment: fixed;
-
-//   /* 表示するコンテナの大きさに基づいて、背景画像を調整 */
-//   background-size: cover;
-
-//   /* 背景画像が読み込まれる前に表示される背景のカラー */
-//   background-color: #464646;
-// }
+.new-post {
+  position: relative;
+  bottom: 60;
+  right: 20;
+}
 
 
-// .background {
-//   background-image: url("background.png");
-//   background-size: contain;                 /* 画像のサイズを指定    */
-//   width: 100%;                              /* 横幅のサイズを指定    */
-//   height: 1000px;
-// }
 
 // 入力フォーム1
 .contact-form {
@@ -142,34 +178,6 @@ li.show{
   }
 }
 
-// 左側に2本線が入った見出し
-.two-line-heading {
-  color: #000000; /* 文字色 */
-  padding: 5px 5px 5px 30px; /* 上・右・下・左の余白 */
-  position: relative;
-
-  &:before {
-    background-color: #696969; /* 左側の線の色 */
-    border-radius: 5px;
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 3px; /* 左端からの位置 */
-    width: 5px; /* 左側の線の幅 */
-    height: 100%;
-  }
-
-  &:after {
-    background-color: #d3d3d3; /* 右側の線の色 */
-    border-radius: 5px;
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 12px; /* 左端からの位置 */
-    width: 5px; /* 右側の線の幅 */
-    height: 100%;
-  }
-}
 
 // ホバーアニメーション
 .expand {
@@ -182,4 +190,51 @@ li.show{
 	transform: scale(1.1);
 }
 
+.thanks-message {
+  font-size: 40px;
+  padding: 200px 100px;
+  text-align: center;
+}
 
+.edit {
+  height: 600px;
+}
+
+// 画像拡大
+ .expand-image:hover {
+      opacity: 0.8;
+    }
+
+.modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: none;
+    }
+
+.bigimg {
+      position: absolute;
+      width: 80%;
+      max-width: 800px;
+      top: 80px;
+      left: 0;
+      right: 0;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+.close-btn {
+      color: #fff;
+      font-size: 40px;
+      position: absolute;
+      right: 20px;
+      top: 0;
+    }
+
+.close-btn a {
+      color: #fff;
+      text-decoration: none;
+    }

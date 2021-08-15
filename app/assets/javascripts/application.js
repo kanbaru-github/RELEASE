@@ -33,13 +33,22 @@ $(document).on('turbolinks:load',function(){
 });
 
 // トップページ
-// 要素を表示させるfunction
-function fadeIn(){
-    $('.js-fadeIn').each(function(i){
-        let delay = 100;  // 0.1秒ずつずれます。好きな秒数に調整してください。
-        $(this).delay(i * delay).queue(function(next){
-            $(this).addClass('show');
-            next();
-        });
-    })
-};
+$(function() {
+  // 一旦hide()で隠してフェードインさせる
+  $('.top-message').hide().fadeIn('slow');
+});
+
+// 画像拡大
+$('expand-image').click(function() {
+  var imgSrc = $(this).children().attr('src');
+  $('.big-img').children().attr('src', imgSrc);
+  $('.modal').fadeIn();
+  $('body,html').css('overflow-y', 'hidden');
+  return false
+});
+
+$('.close-btn').click(function() {
+  $('.modal').fadeOut();
+  $('body,html').css('overflow-y', 'visible');
+  return false
+});

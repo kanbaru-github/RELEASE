@@ -4,8 +4,6 @@ class Public::ContactsController < ApplicationController
     @contact = Contact.new
   end
 
-  # newアクションから入力内容を受け取り、
-  # 送信ボタンを押されたらcreateアクションを実行します。
   def confirm
     @contact = Contact.new(contact_params)
     if @contact.invalid?
@@ -13,9 +11,7 @@ class Public::ContactsController < ApplicationController
     end
   end
 
-  # 入力内容に誤りがあった場合、
-  # 入力内容を保持したまま前のページに戻るのが当たり前になっているかと思いますが、
-  # backアクションを定義することで可能となります。
+  # 入力内容に誤りがあった場合、入力内容を保持したまま前のページに戻る
   def back
     @contact = Contact.new(contact_params)
     render :new

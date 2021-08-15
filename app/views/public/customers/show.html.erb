@@ -1,91 +1,82 @@
-<div class="container"></div>
+<div class="container">
+
   <div class="row">
-    <h5 class="two-line-heading">マイページ</h5>
+    <h5 class="heading">マイページ</h5>
   </div>
 
-  <div class="row mt-3">
-    <div class="col-10 d-flex justify-content-end">
-      <div>共感数</div>
-      <div>応援数</div>
-    </div>
+  <div class="row">
+    <table class="table">
+      <tr align="center">
+        <td>共感数</td>
+        <td><%= @sympathies_count %></td>
+      </tr>
+      <tr align="center">
+        <td>応援数</td>
+        <td><%= @cheers_count %></td>
+      </tr>
+      <tr align="center">
+        <td>会員情報（メールアドレス）</td>
+        <td><%= @customer.email %><%= link_to "編集する", edit_customer_path, class:"btn btn-success float-right" %></td>
+      </tr>
+      <tr align="center">
+        <td>非表示にした投稿数</td>
+        <td>
+          <%= link_to customer_mutings_path(@customer), class:"expand" do %>
+            <%= @customer.mutings.count %>
+            非表示にした投稿一覧へ
+          <% end %>
+        </td>
+      </tr>
+    </table>
   </div>
 
-  <div class="row mt-2">
-    <div class="col-10">
-      <table class="table">
+  <div class="row">
+    <h5 class="heading">投稿数の前日比・前週比</h5>
+  </div>
+
+  <div class="row">
+    <table class='table table-bordered'>
+      <thead>
         <tr>
-          <th>メールアドレス</th>
-          <th class="w-75"><%= @customer.email %><%= link_to "編集する", edit_customer_path, class:"btn btn-success float-right" %></td>
+          <th>今日の投稿数</th>
+          <th>前日の投稿数</th>
+          <th>前日比</th>
+          <th>今週の投稿数</th>
+          <th>前週の投稿数</th>
+          <th>前週比</th>
         </tr>
+      </thead>
+      <tbody>
         <tr>
-          <th>非表示にした投稿数</th>
-          <th>
-            <%= link_to customer_mutings_path(@customer) do %>
-              <%= @customer.mutings.count %>
-              <h6>非表示にした投稿一覧へ</h6>
-            <% end %>
-          </th>
+          <td><%= @today_post.count %></td>
+          <td><%= @yesterday_post.count %></td>
+          <td>
+          <% if @yesterday_post.count == 0 %>
+            前日の投稿が0のため計算できません
+          <% else %>
+            <% @the_day_before =   @today_post.count / @yesterday_post.count.to_f  %>
+            <%= (@the_day_before * 100).round %>%
+          <% end %>
+          </td>
+          <td><%= @this_week_post.count %></td>
+          <td><%= @last_week_post.count %></td>
+          <td>
+          <% if @last_week_post.count == 0 %>
+            前週の投稿が0のため計算できません
+          <% else %>
+            <% @the_week_before = @this_week_post.count / @last_week_post.count.to_f  %>
+            <%= (@the_week_before * 100).round %>%
+          <% end %>
         </tr>
-      </table>
-    </div>
+      </tbody>
+    </table>
   </div>
 
   <div class="row">
-    <h3>投稿数の前日比・前週比</h3>
-    <div class="table_width">
-      <table class='table table-bordered'>
-        <thead>
-          <tr>
-            <th>今日の投稿数</th>
-            <th>前日の投稿数</th>
-            <th>前日比</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><%= @today_post.count %></td>
-            <td><%= @yesterday_post.count %></td>
-            <td>
-              <% if @yesterday_post.count == 0 %>
-                前日の投稿が0のため計算できません
-              <% else %>
-                <% @the_day_before =   @today_post.count / @yesterday_post.count.to_f  %>
-                <%= (@the_day_before * 100).round %>%
-              <% end %>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="table_width">
-      <table class='table table-bordered'>
-        <thead>
-          <tr>
-            <th>今週の投稿数</th>
-            <th>前週の投稿数</th>
-            <th>前週比</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><%= @this_week_post.count %></td>
-            <td><%= @last_week_post.count %></td>
-            <td>
-              <% if @last_week_post.count == 0 %>
-                前週の投稿が0のため計算できません
-              <% else %>
-                <% @the_week_before = @this_week_post.count / @last_week_post.count.to_f  %>
-                <%= (@the_week_before * 100).round %>%
-              <% end %>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <h5 class="heading">7日間分の投稿数</h5>
   </div>
 
   <div class="row">
-    <h4>7日間分の投稿数</h4>
     <table class='table table-bordered'>
       <thead>
         <tr>
@@ -175,28 +166,35 @@
 
   <div id="search_result">
     <% if @search_post.present? %>
-    <!--存在する場合-->
-      <%= render 'search', search_post: @search_post %>
+      <h5 class="heading">検索結果</h5>
+      <table class='table table-bordered'>
+        <thead>
+          <tr>
+            <th>投稿数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @search_book %></td>
+          </tr>
+        </tbody>
+      </table>
     <% end %>
   </div>
 
   <div class="row">
-    <h2>YOUR POSTS</h2>
-    <table class='table table-hover'>
-      <thead>
-        <tr>
-          <th>投稿日時</th>
-          <th>IMAGE</th>
-          <th>TEXT</th>
-          <th></th>
-        </tr>
-      </thead>
+    <h5 class="heading">投稿履歴</h5>
+  </div>
+
+  <div class="row">
+    <table class='table'>
       <tbody>
         <% @posts.each do |post| %>
           <tr>
-            <th><%= post.created_at.strftime("%Y/%m/%d %H:%M:%S") %></th>
-            <th><%= attachment_image_tag(post, :image, :fill, 50, 50, fallback: "no-image.jpg") %></th>
-            <th><%= post.text %></th>
+            <td><%= post.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
+            <td><%= post.category.name %></td>
+            <td><%= attachment_image_tag(post, :image, :fill, 50, 50) %></td>
+            <td width="500"><%= post.text %></td>
             <td><%= link_to '編集する', edit_post_path(post), class: "btn btn-sm btn-success" %></td>
             <td><%= link_to '削除する', post_path(post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
           </tr>

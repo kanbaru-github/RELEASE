@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   }
 
   scope module: :public do
+    
     root 'homes#top'
     get "homes/about" => "homes#about"
     resources :posts do

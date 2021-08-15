@@ -11,6 +11,9 @@ class Public::PostsController < ApplicationController
       all_posts = Post.includes(:category)
     end
     @posts = all_posts.page(params[:page]).reverse_order.where.not(customer_id: params[:id])
+
+    @posts = @posts.where('text LIKE ?', "%#{params[:search]}%") if params[:search].present?
+
     @all_posts_count = all_posts.count
     @categories = Category.all
   end
