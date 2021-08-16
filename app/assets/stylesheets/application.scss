@@ -248,19 +248,10 @@ li{
   text-align: center;
 }
 
-// .edit {
-//   height: 600px;
-// }
-
-.contact {
-  height: 600px;
-}
-
 // 画像拡大
- .expand-image:hover {
+.expand-image:hover {
       opacity: 0.8;
     }
-
 .modal {
       position: fixed;
       top: 0;
@@ -270,7 +261,6 @@ li{
       background-color: rgba(0, 0, 0, 0.8);
       display: none;
     }
-
 .bigimg {
       position: absolute;
       width: 80%;
@@ -281,7 +271,6 @@ li{
       margin-right: auto;
       margin-left: auto;
     }
-
 .close-btn {
       color: #fff;
       font-size: 40px;
@@ -289,7 +278,6 @@ li{
       right: 20px;
       top: 0;
     }
-
 .close-btn a {
       color: #fff;
       text-decoration: none;

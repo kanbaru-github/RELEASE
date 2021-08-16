@@ -67,19 +67,29 @@ $(function() {
 });
 
 // 画像拡大
-$('expand-image').click(function() {
-  var imgSrc = $(this).children().attr('src');
-  $('.big-img').children().attr('src', imgSrc);
-  $('.modal').fadeIn();
-  $('body,html').css('overflow-y', 'hidden');
-  return false
-});
+$(function() {
+  $('.expand-image').click(function() {
+    console.log("画像拡大");
+    var imgSrc = $(this).children().attr('src');
+      $('.bigimg').children().attr('src', imgSrc);
+    // クリックされた時にsrcにimage-urlを代入
+    // $('.big-img').children().attr('src', $(this).data("imageUrl"));でも同じ
+    $('.modal').fadeIn();
+    $('body,html').css('overflow-y', 'hidden');
+    // 画像が画面からはみ出る場合は非表示にする。画面のブレ防止のため。
+    return false
+  });
+  $('.close-btn').click(function() {
+    $('.modal').fadeOut();
+    $('body,html').css('overflow-y', 'visible');
+    return false
+  });
+})
 
-$('.close-btn').click(function() {
-  $('.modal').fadeOut();
-  $('body,html').css('overflow-y', 'visible');
-  return false
-});
+
+
+
+
 
 // 検索
 document.addEventListener('turbolinks:load',function(){
