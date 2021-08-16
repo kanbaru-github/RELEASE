@@ -1,11 +1,14 @@
 <div class="container mt-5">
 
   <div class="row">
-    <div class="col-xs-6 mx-auto"><h2>会員ログイン</h2></div>
+    <div class="heading"><h5>会員ログイン</h5></div>
   </div>
 
   <%= form_with model: @customer, url: customer_session_path, class:"contact-form" ,local: true do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
+  <% if flash[:danger] %>
+    <p class="text-red"><%= flash[:danger] %></p>
+  <% end %>
 
     <div class="row mt-5">
       <div class="col-8 mx-auto col-lg-5 form-field">

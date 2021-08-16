@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="min-height: 600px;">
 
   <div class="edit">
 
@@ -16,7 +16,9 @@
       </div>
 
       <div class="row my-5 py-5">
-        <div class="mx-auto"><%= link_to "退会する", confirm_unsubscribe_path, class:"btn btn-lg btn-danger" %></div>
+        <div class="mx-auto">
+          <%= link_to "退会する", customer_confirm_unsubscribe_path(@customer), class:"btn btn-lg btn-danger" %>
+        </div>
       </div>
 
     <% end %>

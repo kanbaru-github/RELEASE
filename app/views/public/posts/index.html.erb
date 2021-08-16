@@ -9,50 +9,27 @@
 
   <div class="row">
     <div class="heading"><h5>投稿一覧</h5></div>
+    <div class="search mx-auto mt-3">
+      <%= form_with model: Post.new, method: :get, class: "search__form" do |f| %>
+        <%= f.text_field :keyword, required: true, class: "search__form__input searchTerm" %>
+        <button type="submit" class="searchButton">
+        <%= image_tag 'seach.png', size:"20x20" %>
+        </button>
+      <% end %>
+    </div>
   </div>
 
   <div class="row">
     <div class="col mt-3">
-      <% if params[:category_id] %>
+    <% if params[:category_id] %>
 			<h5><%= @category.name %>の投稿一覧 (全<%= @all_posts_count %>件)</h5>
 		<% else %>
 			<h5>投稿一覧 (全<%= @all_posts_count %>件)</h5>
 		<% end %>
-      <table class='table'>
-        <tbody>
-        <% @posts.each do |post| %>
-          <% unless current_customer.muting?(post.customer) %>
-            <tr id="post_<%= post.id %>">
-              <td><%= post.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
-              <td><%= post.category.name %></td>
-
-              <td><<%= attachment_image_tag(post, :image, :fill, 50, 50) %></div></td>
-              <div class="modal">
-            　　<div class="big-img"><img src="" alt=""></div>
-            　　<p class="close-btn"><a href="">✖</a></p>
-  　　　　　　　　　　</div>
-  　　　　　　　　　　
-  　　　　　　<%=  link_to @hoge.image.url, 'data-lightbox': @hoge.image do %>
-  <%= image_tag @hoge.image.url if @hoge.image? %>
-<% end %>　　　　
-  　　　　　　
-
-              <td width="400"><%= post.text %></td>
-              <% if post.customer == current_customer %>
-                <td><%= link_to '編集する', edit_post_path(post), class: "btn btn-sm btn-success" %></td>
-                <td><%= link_to '削除する', post_path(post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
-              <% else %>
-                <td class="sympathy-btn"><%= render "public/sympathies/sympathy-btn", post: post %></td>
-                <td class="cheer-btn"><%= render "public/cheers/cheer-btn", post: post %></td>
-                <td><%= link_to "非表示にする", customer_relationships_path(post.customer.id), method: :post, class: "btn btn-success" %></td>
-              <% end %>
-            </tr>
-          <% end %>
-        <% end %>
-        </tbody>
-      </table>
-      <%= paginate @posts %>
-      <a><%= link_to image_tag("new_post.jpeg", size:"50x50"), new_post_path, class: "expand new-post" %></a>
+		<div id="index">
+      <%= render "public/posts/index", posts: @posts %>
+    </div>
+    <%= paginate @posts %>
+    </div>
   </div>
-</div>
 </div>

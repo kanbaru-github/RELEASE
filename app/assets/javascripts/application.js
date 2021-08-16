@@ -38,6 +38,34 @@ $(function() {
   $('.top-message').hide().fadeIn('slow');
 });
 
+// aboutページ
+const CLASSNAME = "-visible";
+const TIMEOUT = 1500;
+const $target = $(".title");
+
+setInterval(() => {
+  $target.addClass(CLASSNAME);
+  setTimeout(() => {
+    $target.removeClass(CLASSNAME);
+  }, TIMEOUT);
+}, TIMEOUT * 2);
+
+// ページのトップに戻る
+$(function() {
+  $('#top a').on('click',function(event){
+    $('body, html').animate({
+      scrollTop:0
+    }, 800);
+    event.preventDefault();
+  });
+});
+
+// サンクスメッセージ
+$(function() {
+  // 一旦hide()で隠してフェードインさせる
+  $('.thanks-message').hide().fadeIn('slow');
+});
+
 // 画像拡大
 $('expand-image').click(function() {
   var imgSrc = $(this).children().attr('src');
@@ -51,4 +79,11 @@ $('.close-btn').click(function() {
   $('.modal').fadeOut();
   $('body,html').css('overflow-y', 'visible');
   return false
+});
+
+// 検索
+document.addEventListener('turbolinks:load',function(){
+$('.search__form__input').on('keyup', function(e){
+  Rails.fire($(".search__form")[0], "submit");
+  });
 });

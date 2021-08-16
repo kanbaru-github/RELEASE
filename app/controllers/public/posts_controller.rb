@@ -12,7 +12,15 @@ class Public::PostsController < ApplicationController
     end
     @posts = all_posts.page(params[:page]).reverse_order.where.not(customer_id: params[:id])
 
-    @posts = @posts.where('text LIKE ?', "%#{params[:search]}%") if params[:search].present?
+    if params[:post].present?
+      if params[:post].empty?
+        @posts = all_posts.page(params[:page]).reverse_order.where.not(customer_id: params[:id])
+      else
+        @posts = Post.where('text LIKE(?)', "%#{params[:post][:keyword]}%")
+      end
+    else
+      @posts = all_posts.page(params[:page]).reverse_order.where.not(customer_id: params[:id])
+    end
 
     @all_posts_count = all_posts.count
     @categories = Category.all

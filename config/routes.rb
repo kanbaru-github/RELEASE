@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   }
 
   scope module: :public do
-    
+
     root 'homes#top'
     get "homes/about" => "homes#about"
     resources :posts do
@@ -27,11 +27,13 @@ Rails.application.routes.draw do
       resource :relationships, only: [:create, :destroy]
       get 'mutings', to: 'relationships#mutings', as: 'mutings'
       get 'muters', to:  'relationships#muters', as: 'muters'
+      get 'unsubscribe' => 'customers#unsubscribe', as: 'confirm_unsubscribe'
+      patch 'withdraw' => 'customers#withdraw', as: 'withdraw_customer'
+      put 'withdraw' => 'customers#withdraw'
     end
     get 'customers/mypage' => 'customers#show', as: 'mypage'
-    get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'confirm_unsubscribe'
-    patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw_customer'
-    put 'customers/withdraw' => 'customers#withdraw'
+
+
     resources :contacts, only: [:new, :create]
     post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
     post 'contacts/back', to: 'contacts#back', as: 'back'
