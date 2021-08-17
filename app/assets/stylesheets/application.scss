@@ -46,7 +46,7 @@ footer {
 }
 
 // header
-li{
+.list-unstyled {
   display: inline-block;
   margin: 0 20px;
 }
@@ -74,48 +74,87 @@ li{
   min-height: 800px;
   background-size: 1000px;
 }
-
-.title {
+// テキストアニメーション
+.about-title {
   display: flex;
   overflow: hidden;
-  color: #aa8f7b;
-  // font-family: 'Josefin Sans', sans-serif;
+  color: #ffa500;
+  font-family: 'Josefin Sans', sans-serif;
 }
-
-.title span {
+.about-title span {
   display: block;
   transform: translate(0, 105%);
   transition: transform cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s;
 }
-
-.title.-visible span {
+.about-title.-visible span {
   transform: translate(0, 0);
 }
-
-.title span:nth-child(2) {
+.about-title span:nth-child(2) {
   transition-delay: 0.06s;
 }
-.title span:nth-child(3) {
+.about-title span:nth-child(3) {
   transition-delay: 0.12s;
 }
-.title span:nth-child(4) {
+.about-title span:nth-child(4) {
   transition-delay: 0.18s;
 }
-.title span:nth-child(5) {
+.about-title span:nth-child(5) {
   transition-delay: 0.24s;
 }
-.title span:nth-child(6) {
+.about-title span:nth-child(6) {
   transition-delay: 0.30s;
 }
-.title span:nth-child(7) {
+.about-title span:nth-child(7) {
   transition-delay: 0.36s;
 }
-.title span:nth-child(8) {
+.about-title span:nth-child(8) {
   transition-delay: 0.42s;
 }
-.title span:nth-child(9) {
+.about-title span:nth-child(9) {
   transition-delay: 0.48s;
 }
+
+.explanation {
+  color: #ffa500;
+  font-size: 24px;
+  margin: 50px 0;
+}
+.explanation:nth-child(odd) {
+    -webkit-animation: horizontal1 1s ease-in-out infinite alternate;
+}
+.explanation:nth-child(even) {
+    -webkit-animation: horizontal2 1s ease-in-out infinite alternate;
+}
+
+.explanation a {
+    -webkit-animation: vertical 1s ease-in-out infinite alternate;
+}
+
+li:nth-child(1) a {
+    -webkit-animation-duration: 1.1s;
+}
+li:nth-child(2) a {
+    -webkit-animation-duration: 1.3s;
+}
+li:nth-child(3) a {
+    -webkit-animation-duration: 1.5s;
+}
+
+@-webkit-keyframes horizontal1 {
+    0% { -webkit-transform:translateX( -3px); }
+  100% { -webkit-transform:translateX(  0px); }
+}
+
+@-webkit-keyframes horizontal2 {
+    0% { -webkit-transform:translateX(  3px); }
+  100% { -webkit-transform:translateX(  0px); }
+}
+
+@-webkit-keyframes vertical {
+    0% { -webkit-transform:translateY(-10px); }
+  100% { -webkit-transform:translateY(  0px); }
+}
+
 
 .heading {
   margin: 10px;
@@ -308,3 +347,25 @@ li{
   cursor: pointer;
   font-size: 20px;
 }
+
+
+// .text {
+// 	overflow: hidden;
+// 	padding: 10px;
+// 	width: 400px;
+// 	height: 80px;
+
+// 	text-overflow: ellipsis;
+// 	-webkit-text-overflow: ellipsis; /* Safari */
+// 	-o-text-overflow: ellipsis; /* Opera */
+// }
+// .text {
+//   overflow: hidden;
+//   width: 400px;
+// }
+// .p {
+//   overflow: hidden
+//     text-overflow: ellipsis
+//     white-space: nowrap
+// }
+

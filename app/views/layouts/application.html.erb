@@ -22,16 +22,16 @@
 
     <main>
       <%= yield %>
-      <div class="new-post">
-        <%= link_to image_tag("new_post.jpeg", size:"50x50"), new_post_path, class: "expand new-post" %>
-      </div>
-      <span id="top">
+      <% if customer_signed_in? %>
+        <div class="new-post">
+          <%= link_to image_tag("new_post.jpeg", size:"50x50"), new_post_path, class: "expand" %>
+        </div>
+      <% end %>
+      <span id="top" class="expand">
         <a href="#">
           <%= image_tag("pagetop.png", size:"50x50") %>
         </a>
       </span>
-      <!--<script src="js/jquery.min.js"></script>-->
-      <!--<script src="js/script.js"></script>-->
     </main>
 
     <footer>
