@@ -1,0 +1,46 @@
+<div class="container background" style="min-height: 600px;">
+
+  <div class="row">
+    <div class="heading"><h5>カテゴリー検索</h5></div>
+    <% @categories.each do |category| %>
+			<div class="category-seach tag-heading expand"><%= link_to category.name, admin_posts_path(category_id: category.id), class: 'text-dark' %></div>
+		<% end %>
+  </div>
+
+  <div class="row">
+    <div class="heading"><h5>テキスト検索</h5></div>
+    <div class="search mt-3 ml-3">
+      <%= form_with url: post_search_path, method: :get, class: "search__form" do |f| %>
+        <%= f.text_field :keyword, required: true, class: "search__form__input searchTerm" %>
+        <button type="submit" class="searchButton">
+        <%= image_tag 'seach.png', size:"20x20" %>
+        </button>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="heading"><h5>投稿一覧</h5></div>
+    <div class="ml-5 mt-4">
+      <%= link_to "共感数が多い順に並び替える", posts_path(sort: 'sympathy'), class: "expand" %>
+    </div>
+    <div class="ml-5 mt-4">
+      <%= link_to "応援数が多い順に並び替える", posts_path(sort: 'cheer'), class: "expand" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col mt-3">
+    <% if params[:category_id] %>
+			<h5><%= @category.name %>の投稿一覧 (全<%= @all_posts_count %>件)</h5>
+		<% else %>
+			<h5>投稿一覧 (全<%= @all_posts_count %>件)</h5>
+		<% end %>
+  		<div id="index">
+        <%= render "admin/posts/index", posts: @posts %>
+      </div>
+    <%= paginate @posts %>
+    </div>
+  </div>
+
+</div>

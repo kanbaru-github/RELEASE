@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :destroy]
     resources :categories, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
+
+    get 'posts/search', to: 'posts#search', as: 'post_search'
+
   end
 
   devise_for :customers, controllers: {
@@ -18,12 +21,13 @@ Rails.application.routes.draw do
 
     root 'homes#top'
     get "homes/about" => "homes#about"
+    get 'posts/search', to: 'posts#search', as: 'post_search'
     resources :posts do
       resource :sympathies, only: [:create, :destroy]
       resource :cheers, only: [:create, :destroy]
     end
+
     resources :customers, only: [:show, :edit, :update] do
-      get "search", to: "customers#search"
       resource :relationships, only: [:create, :destroy]
       get 'mutings', to: 'relationships#mutings', as: 'mutings'
       get 'muters', to:  'relationships#muters', as: 'muters'

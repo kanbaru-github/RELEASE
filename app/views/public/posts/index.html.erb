@@ -8,15 +8,24 @@
   </div>
 
   <div class="row">
+    <div class="heading"><h5>テキスト検索</h5></div>
+    <div class="search ml-3 mt-3">
+    <%= form_with url: post_search_path, method: :get, class: "search__form" do |f| %>
+      <%= f.text_field :keyword, required: true, class: "search__form__input searchTerm" %>
+      <button type="submit" class="searchButton">
+      <%= image_tag 'seach.png', size:"20x20" %>
+      </button>
+    <% end %>
+    </div>
+  </div>
+
+  <div class="row">
     <div class="heading"><h5>投稿一覧</h5></div>
-    <div class="search mx-auto mt-3">
-      <%= form_with model: Post.new, method: :get, class: "search__form" do |f| %>
-        <%= f.text_field :keyword, required: true, class: "search__form__input searchTerm" %>
-        <button type="submit" class="searchButton">
-        <%= image_tag 'seach.png', size:"20x20" %>
-        </button>
-      <% end %>
-      <%= link_to "共感数が多い順", posts_path(sort: 'created_at DESC') %> | <%= link_to "応援数が多い順", posts_path(sort: 'rate DESC') %>
+    <div class="ml-5 mt-4">
+      <%= link_to "共感数が多い順に並び替える", posts_path(sort: 'sympathy'), class: "expand" %>
+    </div>
+    <div class="ml-5 mt-4">
+      <%= link_to "応援数が多い順に並び替える", posts_path(sort: 'cheer'), class: "expand" %>
     </div>
   </div>
 

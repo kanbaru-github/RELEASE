@@ -19,15 +19,14 @@
 // 入力フォーム
 //初回読み込み、リロード、ページ切り替えで動く。
 $(document).on('turbolinks:load',function(){
-  console.log("test")
+  // console.log("test")
+  // デベロッパーツールで確認できる
   // キーが離されたときに発生
   $('.form-js-input').on('keyup', function () {
     if ($(this).val()) {
       $(this).addClass('not-empty');
-      console.log('true')
     } else {
       $(this).removeClass('not-empty');
-      console.log('false')
     }
   });
 });
@@ -53,8 +52,6 @@ $(function(){
   }, TIMEOUT * 2);
 });
 
-
-
 // ページのトップに戻る
 $(function() {
   $('#top a').on('click',function(event){
@@ -76,7 +73,7 @@ $(function() {
   $('.expand-image').click(function() {
     console.log("画像拡大");
     var imgSrc = $(this).children().attr('src');
-      $('.bigimg').children().attr('src', imgSrc);
+      $('.big-img').children().attr('src', imgSrc);
     // クリックされた時にsrcにimage-urlを代入
     // $('.big-img').children().attr('src', $(this).data("imageUrl"));でも同じ
     $('.modal').fadeIn();

@@ -24,8 +24,8 @@
             <td><%= link_to '編集する', edit_post_path(post), class: "btn btn-sm btn-success" %></td>
             <td><%= link_to '削除する', post_path(post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
           <% else %>
-            <td class="sympathy-btn"><%= render "public/sympathies/sympathy-btn", post: post %></td>
-            <td class="cheer-btn"><%= render "public/cheers/cheer-btn", post: post %></td>
+            <td class="sympathy-btn"><%= render "public/sympathies/sympathy-btn", post: post %><div class="shadow"></div></td>
+            <td class="cheer-btn"><%= render "public/cheers/cheer-btn", post: post %><div class="shadow"></div></td>
             <td><%= link_to "非表示にする", customer_relationships_path(post.customer.id), method: :post, class: "btn btn-success" %></td>
           <% end %>
         </tr>

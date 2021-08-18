@@ -1,5 +1,7 @@
 <nav class="navbar navbar-expand-lg">
-        <div class="container">
+        <div class="container-fluid">
+          <!--画面幅関係なく常に100%-->
+          <!--画面幅576px未満では常にwidth: 100%であり、576px以上ではwidth: 540px、768px以上ではwidth: 720px、992px以上ではwidth: 960px、1200px以上ではwidth: 1140pxが適用-->
         <% if admin_signed_in? %>
           <a href="admin_posts_path">
             <%= image_tag 'logo.png', size:"350x100" %>
@@ -35,7 +37,7 @@
               <% end %>
             </li>
             <li class="list-unstyled">
-              <%= link_to destroy_admin_session_path, class: 'text-dark expand' do %>
+              <%= link_to destroy_admin_session_path, method: :delete, class: 'text-dark expand' do %>
                 <%= image_tag 'log_out.png', size:"20x20" %>
                 ログアウト
               <% end %>

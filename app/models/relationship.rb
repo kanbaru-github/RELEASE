@@ -1,8 +1,8 @@
 class Relationship < ApplicationRecord
 
   belongs_to :muter, class_name: "Customer"
-  # mute:ミュートする
+  # muter:ミュートする
   belongs_to :muted, class_name: "Customer"
-  # mute：ミュートされる
+  # muted：ミュートされる
 
 end
