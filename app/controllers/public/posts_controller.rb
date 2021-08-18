@@ -10,7 +10,7 @@ class Public::PostsController < ApplicationController
     else
       all_posts = Post.includes(:category)
     end
-    @posts = all_posts.page(params[:page]).reverse_order.where.not(customer_id: params[:id])
+    @posts = all_posts.page(params[:page]).reverse_order.where.not(customer_id: params[:id]).order(params[:sort])
 
     if params[:post].present?
       if params[:post].empty?

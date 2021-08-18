@@ -16,6 +16,7 @@
         <%= image_tag 'seach.png', size:"20x20" %>
         </button>
       <% end %>
+      <%= link_to "共感数が多い順", posts_path(sort: 'created_at DESC') %> | <%= link_to "応援数が多い順", posts_path(sort: 'rate DESC') %>
     </div>
   </div>
 
