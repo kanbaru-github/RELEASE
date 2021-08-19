@@ -1,11 +1,11 @@
 <% if post.sympathied_by?(current_customer) %>
-  <%= link_to post_sympathies_path(post), method: :delete, remote: true do %>
+  <%= link_to post_sympathies_path(post), method: :delete, remote: true, class: "expand" do %>
     <%= image_tag("sympathy.jpeg", size:"20x20") %>
-    <%= post.sympathies.count %>
   <% end %>
+  <%= post.sympathies.count %>
 <% else %>
-  <%= link_to post_sympathies_path(post), method: :post, remote: true do %>
+  <%= link_to post_sympathies_path(post), method: :post, remote: true, class: "expand" do %>
     <%= image_tag("sympathy.jpeg", size:"20x20") %>
-    <%= post.sympathies.count %>
   <% end %>
+  <%= post.sympathies.count %>
 <% end %>

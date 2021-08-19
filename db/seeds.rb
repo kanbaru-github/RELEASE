@@ -50,6 +50,16 @@ Post.create!(
       text: "test1"
     },
     {
+      customer_id: 1,
+      category_id: 2,
+      text: "疲れた"
+    },
+    {
+      customer_id: 1,
+      category_id: 1,
+      text: "楽しい"
+    },
+    {
       customer_id: 2,
       category_id: 2,
       text: "test2"

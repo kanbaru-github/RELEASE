@@ -8,14 +8,14 @@
           <td><%= post.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
           <td><%= post.category.name %></td>
           <td>
-            <div class="expand-image" data-image-url="<%= attachment_url(post, :image, :fill, 700, 700) %>">
-              <!--data:データ型を扱うことの宣言。その後ろは任意-->
-              <!--attachment_url:refileのURLを取得するメソッド-->
+            <div class="expand-image">
               <%= attachment_image_tag(post, :image, :fill, 50, 50) %>
             </div>
           </td>
           <div class="modal">
-          　　<div class="big-img"><img src="" alt=""></div>
+          　　<div class="big-img">
+          　　    <%= attachment_image_tag(post, :image, :fill, 700, 700) %>
+          　　</div>
           　　<p class="close-btn"><a href="">✖</a></p>
           </div>
           <td class="text"><p><%= post.text.truncate(100) %></p></td>

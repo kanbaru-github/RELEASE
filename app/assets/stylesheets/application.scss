@@ -206,6 +206,7 @@ li:nth-child(3) a {
 
 
 .heading {
+  height: 50px;
   margin: 10px;
   padding: 1rem 3rem;
   color: #fff;
@@ -213,6 +214,24 @@ li:nth-child(3) a {
   background-image: -webkit-gradient(linear, right top, left top, from(#9be15d), to(#00e3ae));
   background-image: -webkit-linear-gradient(right, #9be15d 0%, #00e3ae 100%);
   background-image: linear-gradient(to left, #9be15d 0%, #00e3ae 100%);
+}
+
+.mini-heading {
+  margin-left: 30px;
+  position: relative;
+  padding: 1rem .5rem;
+}
+.mini-heading:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  content: '';
+  border-radius: 3px;
+  background-image: -webkit-gradient(linear, right top, left top, from(#2af598), to(#009efd));
+  background-image: -webkit-linear-gradient(right, #2af598 0%, #009efd 100%);
+  background-image: linear-gradient(to left, #2af598 0%, #009efd 100%);
 }
 
 .category-seach{
@@ -223,10 +242,11 @@ li:nth-child(3) a {
   background-color: #fff;
 }
 
+// タグ検索
 .tag-heading {
   position: relative;
   display: inline-block;
-  height: 64px;
+  height: 50px;
   margin-left: 30px;
   padding: 1rem 2rem 1rem 3rem;
   color: #fff;
@@ -237,7 +257,7 @@ li:nth-child(3) a {
   top: 0;
   left: -30px;
   content: '';
-  border-width: 32px 30px 32px 0;
+  border-width: 25px 30px 25px 0;
   border-style: solid;
   border-color: transparent #fa4141 transparent transparent;
 }
@@ -299,6 +319,7 @@ li:nth-child(3) a {
       right: 0;
       margin-right: auto;
       margin-left: auto;
+      display: none;
     }
 .close-btn {
       color: #fff;
@@ -345,3 +366,25 @@ li:nth-child(3) a {
 }
 
 // 共感、応援
+.sympathy-btn .cheer-btn {
+  font-family: Source Sans Pro;
+  font-size: 1rem;
+  line-height: 3.5em;
+  padding: 0 1.5em;
+  background: gold;
+  box-shadow: inset 0 -.125rem rgba(0,0,0,.2);
+  color: black;
+  border-radius: 5em;
+  cursor: pointer;
+  user-select: none;
+  transform-origin: 100% 100%;
+
+  &:focus { outline: 0; }
+}
+.shadow {
+  margin-top: -.325rem;
+  width: 100%;
+  height: .75rem;
+  background: radial-gradient(closest-side, gainsboro, transparent);
+  opacity: 0;
+}

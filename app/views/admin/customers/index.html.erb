@@ -1,0 +1,45 @@
+<div class="container" style="min-height: 600px;">
+
+  <div class="row">
+    <h5 class="heading">会員一覧</h5>
+  </div>
+
+  <div class="row">
+    <h5 class="mini-heading">メールアドレス検索</h5>
+    <div class="search mt-3 ml-3">
+      <%= form_with url: post_search_path, method: :get, class: "search__form" do |f| %>
+        <%= f.text_field :keyword, required: true, class: "search__form__input searchTerm" %>
+        <button type="submit" class="searchButton">
+        <%= image_tag 'seach.png', size:"20x20" %>
+        </button>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>会員ID</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @customers.each do |customer| %>
+          <tr>
+            <td><%= customer.id %></td>
+            <td><%= customer.email %></td>
+            <td>
+              <% if customer.is_active %>
+                <p class="text-success"><%= "有効" %></p>
+              <% else %>
+                <p class="text-secondary"><%= "退会" %></p>
+            	<% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
