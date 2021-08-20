@@ -12,8 +12,10 @@ class Public::PostsController < ApplicationController
     end
     muted_customer = Relationship.where(muter_id: current_customer.id)
     if params[:sort] == "sympathy"
-      @posts= all_posts.page(params[:page]).left_outer_joins(:sympathies).where.not(customer_id: muted_customer.pluck(:muted_id))
-              .group('posts.id').select('posts.*, COUNT("sympathies.*") AS sympathy').order(sympathy: :desc)
+       @posts= all_posts.page(params[:page]).left_outer_joins(:sympathies).where.not(customer_id: muted_customer.pluck(:muted_id))
+              .group('posts.id').select('posts.*, COUNT("sympathies.*") AS sympathy').order('count(post_id) desc')
+      # @posts= all_posts.page(params[:page]).left_outer_joins(:sympathies).where.not(customer_id: muted_customer.pluck(:muted_id))
+      #         .group('posts.id').select('posts.*, COUNT("sympathies.*") AS sympathy').order(sympathy: :desc)
     # left_outer_joins(:sympathies)でsympathiesテーブルを外部結合する。
     # 結合したテーブルをpost.idでグループ化する。共感されている対象のPostが同じ同士でグループ化する
     # select文で返すデータを指定（postテーブルの全てとsympathies_count)

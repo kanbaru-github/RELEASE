@@ -88,8 +88,8 @@ $(function() {
 //   });
 // })
 $(function() {
-  $('.expand-image').click(function() {
     console.log("画像拡大");
+  $('.expand-image').click(function() {
     // var imgSrc = $(this).children().attr('src');
     // imgSrc.width(700);
     // console.log({imgSrc})
@@ -119,7 +119,7 @@ $('.search__form__input').on('keyup', function(e){
 });
 
 // 共感、応援
-$("sympathy-btn").mousedown(function(){
+$(".sympathy-btn").mousedown(function(){
   console.log("test")
   // マウスのボタンが押されたときに発生するイベント
   // 同じようなイベントとしてマウスが押されて離されたときに発生する click イベントがある
@@ -142,7 +142,7 @@ $("sympathy-btn").mousedown(function(){
 
 });
 
-$("cheer-btn").mousedown(function(){
+$(".cheer-btn").mousedown(function(){
   $(this).html("Recommended").velocity({
     backgroundColorRed : "0",
     translateY: "-1.5rem",

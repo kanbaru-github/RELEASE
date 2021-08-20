@@ -67,7 +67,9 @@ Rails.application.configure do
     domain: 'smtp.gmail.com',
     user_name: ENV['SMTP_USERNAME'],
     password: ENV['SMTP_PASSWORD'],
-    enable_starttls_auto: true
   }
+
+  config.web_console.whitelisted_ips = '60.74.201.90'
+  # ホワイトリスト：警戒する必要のない対象
 
 end

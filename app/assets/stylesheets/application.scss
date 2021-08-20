@@ -319,6 +319,8 @@ li:nth-child(3) a {
       right: 0;
       margin-right: auto;
       margin-left: auto;
+      margin-top: auto;
+      margin-bottom: auto;
       display: none;
     }
 .close-btn {
@@ -387,4 +389,11 @@ li:nth-child(3) a {
   height: .75rem;
   background: radial-gradient(closest-side, gainsboro, transparent);
   opacity: 0;
+}
+
+.notice {
+  font-size: 24px;
+  color: #008000;
+  text-align: center;
+  padding: 20px;
 }

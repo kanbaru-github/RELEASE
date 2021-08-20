@@ -1,5 +1,7 @@
 <div class="container" style="min-height: 600px;">
 
+  <div class="notice"><%= flash[:notice] %></div>
+
   <div class="row">
     <h5 class="heading">会員一覧</h5>
   </div>
@@ -16,7 +18,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row my-3">
     <table class="table">
       <thead>
         <tr>
@@ -31,15 +33,18 @@
             <td><%= customer.id %></td>
             <td><%= customer.email %></td>
             <td>
-              <% if customer.is_active %>
-                <p class="text-success"><%= "有効" %></p>
-              <% else %>
-                <p class="text-secondary"><%= "退会" %></p>
-            	<% end %>
+            <% if customer.is_active %>
+              <p class="text-success"><%= "有効" %></p>
+            <% else %>
+              <p class="text-secondary"><%= "退会" %></p>
+          	<% end %>
             </td>
+            <td><%= link_to '編集する', edit_admin_customer_path(customer), class: "btn btn-sm btn-success" %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
+    <%= paginate @customers %>
   </div>
+
 </div>
