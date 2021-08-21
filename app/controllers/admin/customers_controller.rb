@@ -15,7 +15,6 @@ class Admin::CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
       flash[:notice]="会員情報を更新しました"
-    # binding.pry
       redirect_to admin_customers_path
     else
       render :edit

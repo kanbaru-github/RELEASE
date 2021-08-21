@@ -1,12 +1,18 @@
 <% if post.cheered_by?(current_customer) %>
-  <%= link_to post_cheers_path(post), method: :delete, remote: true do %>
-    <%= image_tag("cheer.jpeg", size:"20x20") %>
-    <%= post.cheers.count %>
+  <%= button_to post_cheers_path(post), method: :delete, remote: true do %>
+    <div class="ballon">
+      <%= image_tag("cheer.jpeg", size:"30x30", class: "expand") %>
+      <span class="ballon-text">応援をやめる</span>
+    </div>
   <% end %>
+  <div class="mx-auto ml-2" style="padding-left: 10px;"><%= post.cheers.count %></div>
 <% else %>
-  <%= link_to post_cheers_path(post), method: :post, remote: true do %>
-    <%= image_tag("cheer.jpeg", size:"20x20") %>
-    <%= post.cheers.count %>
+  <%= button_to post_cheers_path(post), method: :post, remote: true do %>
+    <div class="ballon">
+      <%= image_tag("cheer.jpeg", size:"30x30", class: "expand") %>
+      <span class="ballon-text">応援する</span>
+    </div>
   <% end %>
+  <div class="mx-auto ml-2" style="padding-left: 10px;"><%= post.cheers.count %></div>
 <% end %>
 

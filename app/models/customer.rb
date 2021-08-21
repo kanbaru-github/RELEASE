@@ -34,4 +34,9 @@ class Customer < ApplicationRecord
     mutings.include?(customer)
   end
 
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  # active_notifications：自分からの通知
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+  # passive_notifications：相手からの通知
+
 end

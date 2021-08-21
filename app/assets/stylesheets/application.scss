@@ -362,33 +362,38 @@ li:nth-child(3) a {
   // 超えたら...表示
 }
 
-// 共感、応援
-.sympathy-btn .cheer-btn {
-  font-family: Source Sans Pro;
-  font-size: 1rem;
-  line-height: 3.5em;
-  padding: 0 1.5em;
-  background: gold;
-  box-shadow: inset 0 -.125rem rgba(0,0,0,.2);
-  color: black;
-  border-radius: 5em;
-  cursor: pointer;
-  user-select: none;
-  transform-origin: 100% 100%;
-
-  &:focus { outline: 0; }
+// 共感、応援の吹き出し
+.ballon {
+  position: relative;                  /* 指定した分だけ相対的に移動 */
 }
-.shadow {
-  margin-top: -.325rem;
-  width: 100%;
-  height: .75rem;
-  background: radial-gradient(closest-side, gainsboro, transparent);
-  opacity: 0;
+.ballon:hover .ballon-text {
+  display: inline;                     /* インライン要素として表示 */
 }
-
-.notice {
-  font-size: 24px;
-  color: #008000;
-  text-align: center;
-  padding: 20px;
+ /* --- 吹き出し ------------------ */
+.ballon-text {
+  display: none;                        /* 要素を非表示 */
+  position: absolute;                   /* 親要素を基準 */
+  padding: 2px;                         /* テキストの前後の余白 */
+  background-color: rgba(255, 127, 127, 0.75);  /* 背景色（透明度） */
+  width:180px;                          /* 吹き出し全体の幅 */
+  left : 30%;                           /* 表示位置 */
+  top : 100%;                           /* 表示位置 */
+  margin-top : 12px;                    /* 表示位置 */
+  font-size: 80%;                       /* 文字サイズ */
+  animation: ballon-textAnime 1s linear;
+}
+.ballon-text:after{
+  border-bottom: 12px solid rgba(255, 127, 127, 0.75);  /* 吹き出し口の高さ・色 */
+  border-left: 10px solid transparent;   /* 吹き出し口の幅１／２ */
+  border-right: 10px solid transparent;  /* 吹き出し口の幅１／２ */
+  top: -12px;                            /* 吹き出し口の位置調整 */
+  left : 5%;                         /* 吹き出し口の横位置 */
+  content: "";                       /* コンテンツの挿入 */
+  position: absolute;                /* 親要素を基準 */
+}
+@keyframes ballon-textAnime{
+  アニメーション開始から終了するまでどのようなアニメーションをするのか指定できるCSSの文法
+ 100%{ color : black; background:rgba(255, 127, 127, 0.75) }
+  50%{ color : black; background:rgba(255, 127, 127, 0.25) }
+   0%{ color : white; background:white   }
 }

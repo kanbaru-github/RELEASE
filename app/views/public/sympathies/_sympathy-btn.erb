@@ -1,11 +1,22 @@
 <% if post.sympathied_by?(current_customer) %>
-  <%= link_to post_sympathies_path(post), method: :delete, remote: true, class: "expand" do %>
-    <%= image_tag("sympathy.jpeg", size:"20x20") %>
+  <%= button_to post_sympathies_path(post), method: :delete, remote: true do %>
+    <!--button_to:buttonタグで囲ったような見た目になる-->
+    <div class="ballon">
+      <%= image_tag("sympathy.jpeg", size:"30x30", class: "expand") %>
+      <span class="ballon-text">共感をやめる</span>
+    </div>
   <% end %>
-  <%= post.sympathies.count %>
+  <span class='sympathy-count' style="padding-left: 10px;">
+    <%= post.sympathies.count %>
+  </span>
 <% else %>
-  <%= link_to post_sympathies_path(post), method: :post, remote: true, class: "expand" do %>
-    <%= image_tag("sympathy.jpeg", size:"20x20") %>
+  <%= button_to post_sympathies_path(post), method: :post, remote: true do %>
+    <div class="ballon">
+      <%= image_tag("sympathy.jpeg", size:"30x30", class: "expand") %>
+      <span class="ballon-text">共感する</span>
+    </div>
   <% end %>
-  <%= post.sympathies.count %>
+  <span class='sympathy-count' style="padding-left: 10px;">
+    <%= post.sympathies.count %>
+  </span>
 <% end %>

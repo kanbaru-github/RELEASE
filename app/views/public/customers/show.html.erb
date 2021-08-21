@@ -9,6 +9,8 @@
       <tr align="center">
         <td>共感数</td>
         <td><%= @sympathies_count %></td>
+        <td rowspan="2" style="vertical-align: middle;"><%= link_to '通知一覧へ', notifications_path, class: "expand" %></td>
+        <!--rowspan:縦方向の結合-->
       </tr>
       <tr align="center">
         <td>応援数</td>

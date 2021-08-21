@@ -37,7 +37,7 @@ Rails.application.routes.draw do
       put 'withdraw' => 'customers#withdraw'
     end
     get 'customers/mypage' => 'customers#show', as: 'mypage'
-
+    resources :notifications, only: :index
 
     resources :contacts, only: [:new, :create]
     post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'

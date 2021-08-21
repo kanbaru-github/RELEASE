@@ -11,21 +11,21 @@
             <div class="expand-image">
               <%= attachment_image_tag(post, :image, :fill, 50, 50) %>
             </div>
-          </td>
-          <div class="modal">
+            <div class="modal">
           　　<div class="big-img">
           　　    <%= attachment_image_tag(post, :image, :fill, 800, 800) %>
           　　</div>
           　　<p class="close-btn"><a href="">✖</a></p>
-          </div>
+            </div>
+          </td>
           <td class="text"><p><%= post.text.truncate(100) %></p></td>
           <!--truncate():文字数制限-->
           <% if post.customer == current_customer %>
             <td><%= link_to '編集する', edit_post_path(post), class: "btn btn-sm btn-success" %></td>
             <td><%= link_to '削除する', post_path(post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
           <% else %>
-            <td class="sympathy-btn"><%= render "public/sympathies/sympathy-btn", post: post %><div class="shadow"></div></td>
-            <td class="cheer-btn"><%= render "public/cheers/cheer-btn", post: post %><div class="shadow"></div></td>
+            <td class="sympathy-btn"><%= render "public/sympathies/sympathy-btn", post: post %></td>
+            <td class="cheer-btn"><%= render "public/cheers/cheer-btn", post: post %></td>
             <td><%= link_to "非表示にする", customer_relationships_path(post.customer.id), method: :post, class: "btn btn-success" %></td>
           <% end %>
         </tr>
