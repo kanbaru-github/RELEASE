@@ -1,0 +1,29 @@
+<table width="700">
+  <thead>
+    <tr>
+      <th>会員ID</th>
+      <th>メールアドレス</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if customers.present? %>
+      <% @customers.each do |customer| %>
+        <tr>
+          <td><%= customer.id %></td>
+          <td><%= customer.email %></td>
+          <td>
+          <% if customer.is_active %>
+            <p class="text-success"><%= "有効" %></p>
+          <% else %>
+            <p class="text-secondary"><%= "退会" %></p>
+        	<% end %>
+          </td>
+          <td><%= link_to '編集する', edit_admin_customer_path(customer), class: "btn btn-sm btn-success" %></td>
+        </tr>
+      <% end %>
+    <% else %>
+      <h2 style="text-align: center; padding-top: 30px;">検索に合致するものはありません</h2>
+    <% end %>
+  </tbody>
+</table>

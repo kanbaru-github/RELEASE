@@ -3,8 +3,20 @@ class Admin::CustomersController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @customers = Customer.page(params[:page]).per(20)
-    # デフォルトは25件
+    if params[:keyword].present?
+    # [:keyword]に値が入ってたら
+      if params[:keyword].empty?
+        # [:keyword]の中身が空だったら
+        @customers = Customer.page(params[:page]).per(20)
+        # デフォルトは25件
+      else
+        # [:keyword]の中身が空じゃなかったら
+        @customers = Customer.where('email LIKE(?)', "%#{params[:keyword]}%")
+      end
+    else
+      # [:keyword]が存在しなかったら
+      @customers = Customer.page(params[:page]).per(20)
+    end
   end
 
   def edit

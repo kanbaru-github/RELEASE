@@ -1,96 +1,107 @@
 <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-          <!--画面幅関係なく常に100%-->
-          <!--画面幅576px未満では常にwidth: 100%であり、576px以上ではwidth: 540px、768px以上ではwidth: 720px、992px以上ではwidth: 960px、1200px以上ではwidth: 1140pxが適用-->
-        <% if admin_signed_in? %>
-          <a href="admin_posts_path">
-            <%= image_tag 'logo.png', size:"350x100" %>
-          </a>
-        <% else %>
-          <a href="/">
-            <%= image_tag 'logo.png', size:"350x100" %>
-          </a>
-        <% end %>
-        <% if customer_signed_in? %>
-          <li class="list-unstyled">ようこそ、会員様！</li>
-        <% elsif admin_signed_in? %>
-          <li class="list-unstyled">ようこそ、管理者様！</li>
-        <% end %>
-        <% if admin_signed_in? %>
-          <ul class="flex">
-            <li class="list-unstyled">
-              <%= link_to admin_posts_path, class: 'text-dark expand' do %>
-                <%= image_tag 'post.png', size:"20x20" %>
-                投稿一覧
-              <% end %>
-            </li>
-            <li class="list-unstyled">
-              <%= link_to admin_customers_path, class: 'text-dark expand' do %>
-                <%= image_tag 'customers.png', size:"20x20" %>
-                会員一覧
-              <% end %>
-            </li>
-            <li class="list-unstyled">
-              <%= link_to admin_categories_path, class: 'text-dark expand' do %>
-                <%= image_tag 'category.png', size:"20x20" %>
-                カテゴリー一覧
-              <% end %>
-            </li>
-            <li class="list-unstyled">
-              <%= link_to destroy_admin_session_path, method: :delete, class: 'text-dark expand' do %>
-                <%= image_tag 'log_out.png', size:"20x20" %>
-                ログアウト
-              <% end %>
-            </li>
-          </ul>
-        <% elsif customer_signed_in? %>
-          <ul class="flex">
-            <li class="list-unstyled">
-              <%= link_to homes_about_path, class: 'text-dark expand' do %>
-                <%= image_tag 'about.png', size:"20x20" %>
-                ABOUT
-              <% end %>
-            </li>
-            <li class="list-unstyled">
-              <%= link_to posts_path, class: 'text-dark expand' do %>
-                <%= image_tag 'post.png', size:"20x20" %>
-                投稿一覧
-              <% end %>
-            </li>
-            <li class="list-unstyled">
-              <%= link_to mypage_path, class: 'text-dark expand' do %>
-                <%= image_tag 'my_page.png', size:"20x20" %>
-                マイページ
-              <% end %>
-            </li>
-            <li class="list-unstyled">
-              <%= link_to destroy_customer_session_path, method: :delete, class: 'text-dark expand' do %>
-                <%= image_tag 'log_out.png', size:"20x20" %>
-                ログアウト
-              <% end %>
-            </li>
-          </ul>
-        <% else %>
-          <ul class="flex">
-            <li class="list-unstyled">
-              <%= link_to homes_about_path, class: 'text-dark expand' do %>
-                <%= image_tag 'about.png', size:"20x20" %>
-                ABOUT
-              <% end %>
-            </li>
-            <li class="list-unstyled">
-              <%= link_to new_customer_registration_path, class: 'text-dark expand' do %>
-                <%= image_tag 'sign_up', size:"20x20" %>
-                新規登録
-              <% end %>
-            </li>
-            <li class="list-unstyled">
-              <%= link_to new_customer_session_path, class: 'text-dark expand' do %>
-                <%= image_tag 'log_in.png', size:"20x20" %>
-                ログイン
-              <% end %>
-            </li>
-          </ul>
-        <% end %>
-        </div>
-      </nav>
+  <div class="container">
+    <!--画面幅関係なく常に100%-->
+    <!--画面幅576px未満では常にwidth: 100%であり、576px以上ではwidth: 540px、768px以上ではwidth: 720px、992px以上ではwidth: 960px、1200px以上ではwidth: 1140pxが適用-->
+  <% if admin_signed_in? %>
+    <a href="admin_posts_path">
+      <%= image_tag 'logo.png', size:"350x100" %>
+    </a>
+  <% else %>
+    <a href="/">
+      <%= image_tag 'logo.png', size:"350x100" %>
+    </a>
+  <% end %>
+  <% if customer_signed_in? %>
+    <span class="header-user">ようこそ、会員様！</span>
+  <% elsif admin_signed_in? %>
+    <span class="header-user">ようこそ、管理者様！</span>
+  <% end %>
+  <% if admin_signed_in? %>
+    <div id="sp-menu">
+      <ul class="flex">
+        <li class="list-unstyled">
+          <%= link_to admin_posts_path, class: 'text-dark expand' do %>
+            <%= image_tag 'post.png', size:"20x20" %>
+            投稿一覧
+          <% end %>
+        </li>
+        <li class="list-unstyled">
+          <%= link_to admin_customers_path, class: 'text-dark expand' do %>
+            <%= image_tag 'customers.png', size:"20x20" %>
+            会員一覧
+          <% end %>
+        </li>
+        <li class="list-unstyled">
+          <%= link_to admin_categories_path, class: 'text-dark expand' do %>
+            <%= image_tag 'category.png', size:"20x20" %>
+            カテゴリー一覧
+          <% end %>
+        </li>
+        <li class="list-unstyled">
+          <%= link_to destroy_admin_session_path, method: :delete, class: 'text-dark expand' do %>
+            <%= image_tag 'log_out.png', size:"20x20" %>
+            ログアウト
+          <% end %>
+        </li>
+      </ul>
+    <% elsif customer_signed_in? %>
+      <ul class="flex">
+        <li class="list-unstyled">
+          <%= link_to homes_about_path, class: 'text-dark expand' do %>
+            <%= image_tag 'about.png', size:"20x20" %>
+            ABOUT
+          <% end %>
+        </li>
+        <li class="list-unstyled">
+          <%= link_to posts_path, class: 'text-dark expand' do %>
+            <%= image_tag 'post.png', size:"20x20" %>
+            投稿一覧
+          <% end %>
+        </li>
+        <li class="list-unstyled">
+          <%= link_to mypage_path, class: 'text-dark expand' do %>
+            <%= image_tag 'my_page.png', size:"20x20" %>
+            マイページ
+          <% end %>
+        </li>
+        <li class="list-unstyled">
+          <%= link_to destroy_customer_session_path, method: :delete, class: 'text-dark expand' do %>
+            <%= image_tag 'log_out.png', size:"20x20" %>
+            ログアウト
+          <% end %>
+        </li>
+      </ul>
+    <% else %>
+      <ul class="flex">
+        <li class="list-unstyled">
+          <%= link_to homes_about_path, class: 'text-dark expand' do %>
+            <%= image_tag 'about.png', size:"20x20" %>
+            ABOUT
+          <% end %>
+        </li>
+        <li class="list-unstyled">
+          <%= link_to new_customer_registration_path, class: 'text-dark expand' do %>
+            <%= image_tag 'sign_up', size:"20x20" %>
+            新規登録
+          <% end %>
+        </li>
+        <li class="list-unstyled">
+          <%= link_to new_customer_session_path, class: 'text-dark expand' do %>
+            <%= image_tag 'log_in.png', size:"20x20" %>
+            ログイン
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  <% end %>
+
+  <div id="hm-icon">
+    <a class="menu-trigger" href="#">
+      <span></span>
+      <span></span>
+      <span></span>
+    </a>
+  </div>
+
+  </div>
+</nav>

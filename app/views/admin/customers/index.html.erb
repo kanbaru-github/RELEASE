@@ -1,15 +1,14 @@
 <div class="container" style="min-height: 600px;">
-
   <div class="notice"><%= flash[:notice] %></div>
 
   <div class="row">
     <h5 class="heading">会員一覧</h5>
   </div>
 
-  <div class="row">
-    <h5 class="mini-heading">メールアドレス検索</h5>
+  <div class="row my-1">
+    <h5 class="mini-heading mr-5">メールアドレス検索</h5>
     <div class="search mt-3 ml-3">
-      <%= form_with url: post_search_path, method: :get, class: "search__form" do |f| %>
+      <%= form_with url: admin_customers_path, method: :get, class: "search__form" do |f| %>
         <%= f.text_field :keyword, required: true, class: "search__form__input searchTerm" %>
         <button type="submit" class="searchButton">
         <%= image_tag 'seach.png', size:"20x20" %>
@@ -19,32 +18,12 @@
   </div>
 
   <div class="row my-3">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>会員ID</th>
-          <th>メールアドレス</th>
-          <th>ステータス</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @customers.each do |customer| %>
-          <tr>
-            <td><%= customer.id %></td>
-            <td><%= customer.email %></td>
-            <td>
-            <% if customer.is_active %>
-              <p class="text-success"><%= "有効" %></p>
-            <% else %>
-              <p class="text-secondary"><%= "退会" %></p>
-          	<% end %>
-            </td>
-            <td><%= link_to '編集する', edit_admin_customer_path(customer), class: "btn btn-sm btn-success" %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <%= paginate @customers %>
+    <div class="mx-auto">
+      <div id="index">
+        <%= render "admin/customers/index", customers: @customers %>
+      </div>
+      <%= paginate @customers %>
+    </div>
   </div>
 
 </div>

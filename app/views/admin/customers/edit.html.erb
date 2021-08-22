@@ -1,4 +1,4 @@
-<div class="container" style="min-height: 500px;">
+<div class="container" style="min-height: 600px;">
 
   <div class="row">
     <h5 class="heading">会員情報編集</h5>
@@ -24,12 +24,8 @@
           </tr>
         </tbody>
       </table>
-    </div>
-  </div>
-
-  <div class="row mt-5">
-    <div class="mx-auto">
-      <%= f.submit '変更を保存する', class: "btn btn-success" %>
+      <%= f.submit '変更を保存する', class: "btn btn-success d-block mx-auto mt-5" %>
+        <!--d-block:bootstrapのdisplay: block;。デフォルトはinline-block-->
     <% end %>
     </div>
   </div>

@@ -9,48 +9,24 @@ class Admin::PostsController < ApplicationController
     else
       all_posts = Post.includes(:category)
     end
-    @posts = all_posts.page(params[:page]).order(params[:sort])
-
-    if params[:post].present?
-      if params[:post].empty?
-        @posts = all_posts.page(params[:page]).reverse_order.where.not(customer_id: params[:id])
-      else
-        @posts = Post.where('text LIKE(?)', "%#{params[:post][:keyword]}%")
-      end
+    if params[:sort] == "sympathy"
+      @posts= all_posts.page(params[:page]).left_outer_joins(:sympathies).group('posts.id').select('posts.*, COUNT("sympathies.*") AS sympathy').order('count(post_id) desc')
+    elsif params[:sort] == "cheer"
+      @posts= all_posts.page(params[:page]).left_outer_joins(:cheers).group('posts.id').select('posts.*, COUNT("cheers.*") AS cheer').order('count(post_id) desc')
     else
-      @posts = all_posts.page(params[:page]).reverse_order.where.not(customer_id: params[:id])
+      @posts = all_posts.page(params[:page]).reverse_order
     end
-
+    # if params[:post].present?
+    #   if params[:post].empty?
+    #     @posts = all_posts.page(params[:page]).reverse_order.where.not(customer_id: params[:id])
+    #   else
+    #     @posts = Post.where('text LIKE(?)', "%#{params[:post][:keyword]}%")
+    #   end
+    # else
+    #   @posts = all_posts.page(params[:page]).reverse_order.where.not(customer_id: params[:id])
+    # end
     @all_posts_count = all_posts.count
     @categories = Category.all
-  end
-
-  def new
-    @post = Post.new
-    @categories = Category.all
-  end
-
-  def create
-    @post = Post.new(post_params)
-    @post.customer_id = current_customer.id
-
-    if @post.save
-      redirect_to posts_path, notice: '投稿しました！'
-    else
-      @categories = Category.all
-      render :new
-    end
-  end
-
-  def edit
-  end
-
-  def update
-    if @post.update(post_params)
-      redirect_to mypage_path, notice: '更新しました！'
-    else
-      render :edit
-    end
   end
 
   def destroy

@@ -83,10 +83,19 @@ $(function() {
   });
 })
 
-// 検索
+// インクリメンタルサーチ
 document.addEventListener('turbolinks:load',function(){
 $('.search__form__input').on('keyup', function(e){
   Rails.fire($(".search__form")[0], "submit");
   });
 });
 
+// ハンバーガーメニュー
+// $(function() {
+//   $('.menu-trigger').on('click', function(event) {
+//     $(this).toggleClass('active');
+//     // トグル処理では、該当のclass属性がある場合にはclassが削除され、ない場合にはclassが追加されます。ここではactive
+//     $('#sp-menu').fadeToggle();
+//     event.preventDefault();
+//   });
+// });

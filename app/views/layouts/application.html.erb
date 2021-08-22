@@ -5,7 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
 
@@ -38,13 +38,24 @@
         <div class="row">
           <div class="mx-auto">
           <% if admin_signed_in? %>
-            <p>管理者</p>
+            <table width="500">
+              <tr>
+                <td rowspan="2">連絡先 株式会社DWC</td>
+                <td>TEL</td>
+                <td>xxxx-xx-xxxx</td>
+              </tr>
+              <tr>
+                <td>MAIL</td>
+                <td>xxxxx@gmail.com</td>
+              </tr>
+            </table>
           <% else %>
             <%= link_to new_contact_path, class: 'text-dark expand' do %>
               <%= image_tag 'contact.png', size:"20x20" %>
                 お問合せはこちら
               <% end %>
           <% end %>
+          <h6 style="text-align: center; padding-top: 10px;">© 2021 RELEASE Inc.</h6>
           </div>
         </div>
       </div>
