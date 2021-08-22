@@ -1,7 +1,7 @@
 <% if post.cheered_by?(current_customer) %>
   <%= button_to post_cheers_path(post), method: :delete, remote: true do %>
     <div class="ballon">
-      <%= image_tag("cheer.jpeg", size:"30x30", class: "expand") %>
+      <%= image_tag("cheer.png", size:"30x30", class: "expand") %>
       <span class="ballon-text">応援をやめる</span>
     </div>
   <% end %>
@@ -9,7 +9,7 @@
 <% else %>
   <%= button_to post_cheers_path(post), method: :post, remote: true do %>
     <div class="ballon">
-      <%= image_tag("cheer.jpeg", size:"30x30", class: "expand") %>
+      <%= image_tag("no-cheer.png", size:"30x30", class: "expand") %>
       <span class="ballon-text">応援する</span>
     </div>
   <% end %>

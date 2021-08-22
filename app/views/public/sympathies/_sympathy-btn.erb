@@ -2,7 +2,7 @@
   <%= button_to post_sympathies_path(post), method: :delete, remote: true do %>
     <!--button_to:buttonタグで囲ったような見た目になる-->
     <div class="ballon">
-      <%= image_tag("sympathy.jpeg", size:"30x30", class: "expand") %>
+      <%= image_tag("sympathy.png", size:"30x30", class: "expand") %>
       <span class="ballon-text">共感をやめる</span>
     </div>
   <% end %>
@@ -12,7 +12,7 @@
 <% else %>
   <%= button_to post_sympathies_path(post), method: :post, remote: true do %>
     <div class="ballon">
-      <%= image_tag("sympathy.jpeg", size:"30x30", class: "expand") %>
+      <%= image_tag("no-sympathy.png", size:"30x30", class: "expand") %>
       <span class="ballon-text">共感する</span>
     </div>
   <% end %>
