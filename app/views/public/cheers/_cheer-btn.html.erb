@@ -5,7 +5,7 @@
       <span class="ballon-text">応援をやめる</span>
     </div>
   <% end %>
-  <div class="mx-auto ml-2" style="padding-left: 10px;"><%= post.cheers.count %></div>
+  <span style="padding-left: 10px;"><%= post.cheers.count %></span>
 <% else %>
   <%= button_to post_cheers_path(post), method: :post, remote: true do %>
     <div class="ballon">
@@ -13,6 +13,6 @@
       <span class="ballon-text">応援する</span>
     </div>
   <% end %>
-  <div class="mx-auto ml-2" style="padding-left: 10px;"><%= post.cheers.count %></div>
+  <span style="padding-left: 10px;"><%= post.cheers.count %></span>
 <% end %>
 

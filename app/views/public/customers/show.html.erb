@@ -9,8 +9,20 @@
       <tr align="center">
         <td>共感数</td>
         <td><%= @sympathies_count %></td>
-        <td rowspan="2" style="vertical-align: middle;"><%= link_to '通知一覧へ', notifications_path, class: "expand" %></td>
+        <td rowspan="2" style="vertical-align: middle;">
         <!--rowspan:縦方向の結合-->
+          <%= link_to notifications_path, class: "expand" do %>
+            <% if unchecked_notifications.any? %>
+              <div class="notification">
+                <%= image_tag("notification.png", size:"20x20") %>
+                <div class="uncheck"></div>
+              </div>
+            <% else %>
+              <%= image_tag("notification.png", size:"20x20") %>
+            <% end %>
+            <span>通知一覧へ</span>
+          <% end %>
+        </td>
       </tr>
       <tr align="center">
         <td>応援数</td>
@@ -26,7 +38,8 @@
         <td><%= @customer.mutings.count %></td>
         <td>
           <%= link_to customer_mutings_path(@customer), class:"expand" do %>
-            非表示にした投稿一覧へ
+            <%= image_tag("mute.png", size:"20x20") %>
+            <span>非表示にした投稿一覧へ</span>
           <% end %>
         </td>
       </tr>

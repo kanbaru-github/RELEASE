@@ -73,6 +73,7 @@ footer {
   background-position-x: center;
   min-height: 800px;
   background-size: 1000px;
+  background-color: #000;
 }
 // テキストアニメーション
 .about-title {
@@ -397,3 +398,16 @@ li:nth-child(3) a {
   50%{ color : black; background:rgba(255, 127, 127, 0.25) }
    0%{ color : white; background:white   }
 }
+
+// 通知
+.notification {
+  position: relative;
+}
+.uncheck {
+  position: absolute;
+  padding-left: 1rem;
+  padding-top: 0rem;
+  color: #efa04c;
+}
+
+

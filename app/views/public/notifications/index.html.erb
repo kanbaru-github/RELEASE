@@ -4,12 +4,15 @@
   </div>
 
   <div class="row">
-    <% notifications = @notifications.where.not(visitor_id: current_customer.id) %>
-    <!--自分の投稿に対する共感、応援は通知に表示しない-->
-    <% if notifications.exists? %>
-      <%= render notifications %>
-      <%= paginate notifications %>
-    <% end %>
-    <h1 class="mx-auto my-5 py-5">通知はありません</h1>
+    <div class="mx-auto">
+      <% notifications = @notifications.where.not(visitor_id: current_customer.id) %>
+      <!--自分の投稿に対する共感、応援は通知に表示しない-->
+      <% if notifications.exists? %>
+        <%= render notifications %>
+        <%= paginate notifications %>
+      <% else %>
+         <h1 class="mx-auto my-5 py-5">通知はありません</h1>
+      <% end %>
+    </div>
   </div>
 </div>

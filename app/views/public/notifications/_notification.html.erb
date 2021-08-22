@@ -1,6 +1,6 @@
 <% visitor = notification.visitor %>
 <% visited = notification.visited %>
-<span>
+<h3>
   <% case notification.action %>
   <%# case:一つの値に対して複数の候補の中で一致するものを探す場合に便利 %>
   <% when 'Sympathy' then %>
@@ -8,6 +8,6 @@
   <% when 'Cheer' then %>
     <%= "あなたの投稿の応援数が増えました！" %>
   <% end %>
-  <%= time_ago_in_words(notification.created_at).upcase %>
+  <%= time_ago_in_words(notification.created_at).upcase %>前
   <!--created_atで作成日時を表示する際に、Twitterのように「〜前」という表示をする方法-->
-</span>
+</h3>

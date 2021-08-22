@@ -3,9 +3,12 @@ class Public::CheersController < ApplicationController
   before_action :authenticate_customer!
 
   def create
-    @post = Post.find(params[:post_id])
-    cheer = @post.cheers.new(customer_id: current_customer.id)
-    cheer.save
+    @cheer = current_customer.cheers.build({post_id: params[:post_id], customer_id: current_customer.id})
+    @post = @cheer.post
+    @cheer.save
+    #  通知
+    post = Post.find(params[:post_id])
+    post.create_notification_cheer!(current_customer)
   end
 
   def destroy
