@@ -90,6 +90,8 @@ $('.search__form__input').on('keyup', function(e){
   });
 });
 
+
+
 // ハンバーガーメニュー
 // $(function() {
 //   $('.menu-trigger').on('click', function(event) {
@@ -99,3 +101,7 @@ $('.search__form__input').on('keyup', function(e){
 //     event.preventDefault();
 //   });
 // });
+$('#hamburger').on('click', function(){
+  $('.icon').toggleClass('close');
+  $('.sm').slideToggle();
+});
