@@ -39,7 +39,7 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.customer_id = current_customer.id
     if @post.save
-      redirect_to mypege_path, notice: '投稿しました！'
+      redirect_to mypage_path, notice: '投稿しました！'
     else
       @categories = Category.all
       render :new
