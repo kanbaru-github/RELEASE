@@ -28,5 +28,4 @@ RSpec.describe "Postモデルのテスト", type: :model do
       end
     end
   end
-
 end

@@ -1,5 +1,4 @@
 class Admin::PostsController < ApplicationController
-
   before_action :authenticate_admin!
 
   def index
@@ -10,9 +9,9 @@ class Admin::PostsController < ApplicationController
       all_posts = Post.includes(:category)
     end
     if params[:sort] == "sympathy"
-      @posts= all_posts.page(params[:page]).left_outer_joins(:sympathies).group('posts.id').select('posts.*, COUNT("sympathies.*") AS sympathy').order('count(post_id) desc')
+      @posts = all_posts.page(params[:page]).left_outer_joins(:sympathies).group('posts.id').select('posts.*, COUNT("sympathies.*") AS sympathy').order('count(post_id) desc')
     elsif params[:sort] == "cheer"
-      @posts= all_posts.page(params[:page]).left_outer_joins(:cheers).group('posts.id').select('posts.*, COUNT("cheers.*") AS cheer').order('count(post_id) desc')
+      @posts = all_posts.page(params[:page]).left_outer_joins(:cheers).group('posts.id').select('posts.*, COUNT("cheers.*") AS cheer').order('count(post_id) desc')
     else
       @posts = all_posts.page(params[:page]).reverse_order
     end
@@ -45,6 +44,4 @@ class Admin::PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:text, :category_id, :sympathies, :cheers)
   end
-
 end
-

@@ -1,5 +1,4 @@
 class Post < ApplicationRecord
-
   attachment :image
 
   belongs_to :customer
@@ -25,9 +24,8 @@ class Post < ApplicationRecord
   scope :created_4day_ago, -> { where(created_at: 4.day.ago.all_day) } # 4日前
   scope :created_5day_ago, -> { where(created_at: 5.day.ago.all_day) } # 5日前
   scope :created_6day_ago, -> { where(created_at: 6.day.ago.all_day) } # 6日前
-  scope :created_this_week, -> { where(created_at: 6.day.ago.beginning_of_day..Time.zone.now.end_of_day) } #今週
+  scope :created_this_week, -> { where(created_at: 6.day.ago.beginning_of_day..Time.zone.now.end_of_day) } # 今週
   scope :created_last_week, -> { where(created_at: 2.week.ago.beginning_of_day..1.week.ago.end_of_day) } # 先週
-
 
   def self.search_for(keyword)
     Post.where('text LIKE ?', '%' + keyword + '%')
@@ -59,6 +57,7 @@ class Post < ApplicationRecord
       notification.save if notification.valid?
     end
   end
+
   # 応援
   def create_notification_cheer!(current_customer)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_customer.id, customer_id, id, 'Cheer'])
@@ -74,5 +73,4 @@ class Post < ApplicationRecord
       notification.save if notification.valid?
     end
   end
-
 end

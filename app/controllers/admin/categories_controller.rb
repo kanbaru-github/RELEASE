@@ -1,5 +1,4 @@
 class Admin::CategoriesController < ApplicationController
-
   # before_action :authenticate_admin!
 
   def index
@@ -32,8 +31,7 @@ class Admin::CategoriesController < ApplicationController
 
   private
 
-    def category_params
-      params.require(:category).permit(:name)
-    end
-
+  def category_params
+    params.require(:category).permit(:name)
+  end
 end

@@ -1,7 +1,6 @@
 class CreateCheers < ActiveRecord::Migration[5.2]
   def change
     create_table :cheers do |t|
-
       t.integer :customer_id
       t.integer :post_id
 

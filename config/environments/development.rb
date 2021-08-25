@@ -19,7 +19,7 @@ Rails.application.configure do
 
     config.cache_store = :memory_store
     config.public_file_server.headers = {
-      'Cache-Control' => "public, max-age=#{2.days.to_i}"
+      'Cache-Control' => "public, max-age=#{2.days.to_i}",
     }
   else
     config.action_controller.perform_caching = false
@@ -71,5 +71,4 @@ Rails.application.configure do
 
   config.web_console.whitelisted_ips = '60.74.201.90'
   # ホワイトリスト：警戒する必要のない対象
-
 end

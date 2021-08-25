@@ -17,7 +17,6 @@ RSpec.describe 'Customerモデルのテスト', type: :model do
         is_expected.to eq false
       end
     end
-
   end
 
   describe 'アソシエーションのテスト' do

@@ -1,5 +1,4 @@
 class Public::RegistrationsController < Devise::RegistrationsController
-  
   # before_action :configure_sign_up_params
 
   # def configure_sign_up_params
@@ -13,5 +12,4 @@ class Public::RegistrationsController < Devise::RegistrationsController
   def after_update_path_for(resource)
     posts_path
   end
-
 end

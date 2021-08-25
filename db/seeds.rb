@@ -9,7 +9,7 @@
 Admin.create!(
   email: "admin@test.com",
   password: "000000"
-  )
+)
 
 Customer.create!(
   [
@@ -22,10 +22,9 @@ Customer.create!(
       email: "customer2@test.com",
       is_active: true,
       password: "222222",
-    }
+    },
   ]
-  )
-
+)
 
 Category.create!(
   [
@@ -37,9 +36,9 @@ Category.create!(
     },
     {
       name: "その他",
-    }
+    },
   ]
-  )
+)
 
 Post.create!(
   [
@@ -47,22 +46,22 @@ Post.create!(
       customer_id: 1,
       category_id: 1,
       image: File.open("./app/assets/images/test.jpeg"),
-      text: "test1"
+      text: "test1",
     },
     {
       customer_id: 1,
       category_id: 2,
-      text: "疲れた"
+      text: "疲れた",
     },
     {
       customer_id: 1,
       category_id: 1,
-      text: "楽しい"
+      text: "楽しい",
     },
     {
       customer_id: 2,
       category_id: 2,
-      text: "test2"
-    }
+      text: "test2",
+    },
   ]
-  )
+)

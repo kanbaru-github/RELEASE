@@ -1,10 +1,9 @@
 class Admin::CustomersController < ApplicationController
-
   before_action :authenticate_admin!
 
   def index
     if params[:keyword].present?
-    # [:keyword]に値が入ってたら
+      # [:keyword]に値が入ってたら
       if params[:keyword].empty?
         # [:keyword]の中身が空だったら
         @customers = Customer.page(params[:page]).per(20)
@@ -26,7 +25,7 @@ class Admin::CustomersController < ApplicationController
   def update
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
-      flash[:notice]="会員情報を更新しました"
+      flash[:notice] = "会員情報を更新しました"
       redirect_to admin_customers_path
     else
       render :edit
@@ -38,5 +37,4 @@ class Admin::CustomersController < ApplicationController
   def customer_params
     params.require(:customer).permit(:email, :is_active)
   end
-
 end

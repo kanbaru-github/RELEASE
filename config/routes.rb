@@ -4,13 +4,12 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-     root 'homes#top'
+    root 'homes#top'
     resources :posts, only: [:index, :destroy]
     resources :categories, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
 
     get 'posts/search', to: 'posts#search', as: 'post_search'
-
   end
 
   devise_for :customers, controllers: {
@@ -19,7 +18,6 @@ Rails.application.routes.draw do
   }
 
   scope module: :public do
-
     root 'homes#top'
     get "homes/about" => "homes#about"
     get 'posts/search', to: 'posts#search', as: 'post_search'
@@ -43,9 +41,5 @@ Rails.application.routes.draw do
     post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
     post 'contacts/back', to: 'contacts#back', as: 'back'
     get 'thanks', to: 'contacts#thanks', as: 'thanks'
-
   end
-
 end
-
-

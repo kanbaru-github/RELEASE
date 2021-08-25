@@ -1,5 +1,4 @@
 class Public::CustomersController < ApplicationController
-
   before_action :authenticate_customer!
   before_action :set_current_customer
 
@@ -17,7 +16,7 @@ class Public::CustomersController < ApplicationController
       @cheers_count += post.cheers.count
     end
 
-    @today_post =  @posts.created_today
+    @today_post = @posts.created_today
     @yesterday_post = @posts.created_yesterday
     @this_week_post = @posts.created_this_week
     @last_week_post = @posts.created_last_week
@@ -71,5 +70,4 @@ class Public::CustomersController < ApplicationController
   def customer_params
     params.permit(:email)
   end
-
 end

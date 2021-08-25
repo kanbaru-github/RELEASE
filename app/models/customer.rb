@@ -29,7 +29,7 @@ class Customer < ApplicationRecord
   end
 
   def muting?(customer)
-    #relationships.include?(customer)
+    # relationships.include?(customer)
     # ミュートしているidを
     mutings.include?(customer)
   end
@@ -38,5 +38,4 @@ class Customer < ApplicationRecord
   # active_notifications：自分からの通知
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
   # passive_notifications：相手からの通知
-
 end
