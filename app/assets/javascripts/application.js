@@ -90,18 +90,19 @@ $('.search__form__input').on('keyup', function(e){
   });
 });
 
-
-
 // ハンバーガーメニュー
-// $(function() {
-//   $('.menu-trigger').on('click', function(event) {
-//     $(this).toggleClass('active');
-//     // トグル処理では、該当のclass属性がある場合にはclassが削除され、ない場合にはclassが追加されます。ここではactive
-//     $('#sp-menu').fadeToggle();
-//     event.preventDefault();
-//   });
-// });
-$('#hamburger').on('click', function(){
-  $('.icon').toggleClass('close');
-  $('.sm').slideToggle();
+$(function() {
+	$('.btn-gNav').on("click", function(){
+	  // ハンバーガーメニュー「btn-gNav」の「.open」の付け替えで、メニュー「.gNev-menu」の位置を画面外⇄画面内を変更
+		$(this).toggleClass('open');
+		// ハンバーガーメニュー「btn-gNav」がクリックされたら、「btn-gNav」に「.open」をtoggleClassで付け替え
+		$('#gNav').toggleClass('open');
+	});
+
+});
+// メニューをクリックされたら、非表示にする
+$(function() {
+	$('.gNav-menu li a').on("click", function(){
+     $('#gNav').removeClass('open');
+	});
 });

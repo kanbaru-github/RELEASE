@@ -4,7 +4,7 @@
     <% posts.each do |post| %>
       <% unless current_customer.muting?(post.customer) %>
         <tr id="post_<%= post.id %>">
-          <td><%= post.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
+          <td class="create-time"><%= post.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
           <td><%= post.category.name %></td>
           <td>
             <div class="expand-image">

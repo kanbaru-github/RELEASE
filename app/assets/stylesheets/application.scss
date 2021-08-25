@@ -17,8 +17,6 @@
 @import "bootstrap";
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
 
-
-
 * {
   margin: 0;
   padding: 0;
@@ -373,6 +371,9 @@ li:nth-child(3) a {
 }
 
 // 一覧ページ
+.create-time {
+  font-size: x-small;
+}
 .text {
   width:400px; word-wrap: break-word;
   // 超えたら...表示
@@ -425,76 +426,116 @@ li:nth-child(3) a {
   color: #efa04c;
 }
 
-
 // ハンバーガーメニュー
-  .sm {
-  display: none;
+#hamburger .btn-gNav{
+	position: fixed;
+// 	要素は文書の通常のフローから除外され、ページレイアウト内に要素のための空間が作成されない
+// 	画面の右に隠しておく。
+	top: 20px;
+	right: 20px;
+	width: 30px;
+	height: 24px;
+	z-index: 3;
+// 	位置指定要素とその子孫要素、またはフレックスアイテムの z 順を定義。より大きな z-index を持つ要素はより小さな要素の上に重なる。
+	box-sizing: border-box;
+	cursor: pointer;
+	-webkit-transition: all 400ms;
+	transition: all 400ms;
 }
 
-@media screen and (max-width:768px) {
-  .pc {
-    display: none;
-  }
-  #hamburger {
-    background-color: transparent;
-    // 指定されている背景色を無効にする
-    position: relative;
-    cursor: pointer;
-    margin: 0 0 0 auto;
-    height: 60px;
-    width: 60px;
-  }
-  .icon span {
-    position: absolute;
-    left: 15px;
-    width: 30px;
-    height: 4px;
-    background-color: #000;
-    border-radius: 8px;
-    transition: ease 0.75s;
-  }
-
-  .icon span:nth-of-type(1) {
-    top: 16px;
-  }
-  .icon span:nth-of-type(2) {
-    top: 28px;
-  }
-  .icon span:nth-of-type(3) {
-    bottom: 16px;
-  }
-
-  .close span:nth-of-type(1) {
-    transform: rotate(45deg);
-    top: 28px;
-  }
-
-  .close span:nth-of-type(2) {
-    opacity: 0;
-  }
-
-  .close span:nth-of-type(3) {
-      transform: rotate(-45deg);
-      top: 28px;
-  }
-
-  .sm {
-      top: 60px;
-      left: 0px;
-      position: absolute;
-      z-index: 10;
-      width: 100%;
-      background-color: rgba(34, 49, 52, 0.9);
-  }
-
-  ul {
-    flex-direction: column;
-    // 主軸の方向や向きを定義。column:積み重なるように配置する
-  }
-
-  a {
-    text-align: center;
-    border-top: solid 0.5px rgba(255, 255, 255, 0.6);
-  }
+#hamburger .btn-gNav span{
+	position: absolute;
+	width: 100%;
+	height: 4px;
+	background: #666;
+	border-radius: 10px;
+	-webkit-transition: all 400ms;
+	transition: all 400ms;
+// 	0.4秒かけて変化する
+}
+#hamburger .btn-gNav span:nth-child(1) {
+	top: 0;
+}
+#hamburger .btn-gNav span:nth-child(2) {
+	top: 10px;
+}
+#hamburger .btn-gNav span:nth-child(3) {
+	top: 20px;
+}
+#hamburger .btn-gNav.open span:nth-child(1){
+	background: #fff;
+// 	color: #000;
+	top: 6px;
+	-webkit-transform: rotate(-45deg);
+	-moz-transform   : rotate(-45deg);
+	transform        : rotate(-45deg);
+}
+#hamburger .btn-gNav.open span:nth-child(2),#hamburger .btn-gNav.open span:nth-child(3){
+	top: 6px;
+	background : #fff;
+// 	color: #000;
+	-webkit-transform: rotate(45deg);
+	-moz-transform   : rotate(45deg);
+	transform        : rotate(45deg);
+}
+#gNav{
+	position: fixed;
+	top: 0;
+	right: -100%;
+	width: 100%;
+	height: 100%;
+	background: #ffa500;
+	font-size: 16px;
+	box-sizing: border-box;
+	z-index: 2;
+	padding-top: 50px;
+	transition: .3s;
+}
+// .openのクラスがある時のみ、画面内に配置します。
+#gNav.open{
+	right: 0px;
+}
+#gNav .gNav-menu{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+// 	メニューは縦並びに配置します。
+	text-align: center;
+	/*justify-content: center;*/
+}
+#gNav .gNav-menu li{
+	display: block;
+	padding : 20px 30px;
+}
+#gNav .gNav-menu li a{
+	color: #000;
+	text-decoration: none;
 }
 
+@media screen and (min-width: 768px){
+  // ハンバーガーボタンを非表示
+	.btn-gNav{
+		display: none;
+	}
+	#gNav{
+		position: fixed;
+		top: 0;
+		right: 0;
+		height: 50px;
+	}
+	#gNav .gNav-menu{
+		display: flex;
+		flex-direction: row;
+		// メニューを横並びにする
+		width: 100%;
+		height: 100%;
+		position: fixed;
+		top: 0;
+		right: 0;
+		padding-left: 50px;
+	}
+  #gNav .gNav-menu li{
+		padding-top: 5px;
+	}
+}
