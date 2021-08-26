@@ -9,21 +9,14 @@ class Admin::PostsController < ApplicationController
       all_posts = Post.includes(:category)
     end
     if params[:sort] == "sympathy"
-      @posts = all_posts.page(params[:page]).left_outer_joins(:sympathies).group('posts.id').select('posts.*, COUNT("sympathies.*") AS sympathy').order('count(post_id) desc')
+      @posts = all_posts.page(params[:page]).left_outer_joins(:sympathies).group('posts.id').
+        select('posts.*, COUNT("sympathies.*") AS sympathy').order('count(post_id) desc')
     elsif params[:sort] == "cheer"
-      @posts = all_posts.page(params[:page]).left_outer_joins(:cheers).group('posts.id').select('posts.*, COUNT("cheers.*") AS cheer').order('count(post_id) desc')
+      @posts = all_posts.page(params[:page]).left_outer_joins(:cheers).group('posts.id').
+        select('posts.*, COUNT("cheers.*") AS cheer').order('count(post_id) desc')
     else
       @posts = all_posts.page(params[:page]).reverse_order
     end
-    # if params[:post].present?
-    #   if params[:post].empty?
-    #     @posts = all_posts.page(params[:page]).reverse_order.where.not(customer_id: params[:id])
-    #   else
-    #     @posts = Post.where('text LIKE(?)', "%#{params[:post][:keyword]}%")
-    #   end
-    # else
-    #   @posts = all_posts.page(params[:page]).reverse_order.where.not(customer_id: params[:id])
-    # end
     @all_posts_count = all_posts.count
     @categories = Category.all
   end

@@ -1,3 +1,7 @@
+# 文字数上限
+LineLength:
+  Max: 150
+
 #ここにはrubocopでコード解析したくないファイルやフォルダを指定します
 AllCops:
   Exclude:
