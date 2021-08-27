@@ -1,32 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-# Release
-
 ## サイト概要
-Releaseはとにかく話を聞いて欲しい人が必ずポジティブな反応をもらえるサービスです。
+RELEASEはとにかく話を聞いて欲しい人が必ずポジティブな反応をもらえるサービスです。
 - 匿名で画像をつけて呟ける
 - 呟きを検索できる
 - 呟きに対する反応が共感と応援のみなので誰も傷つかない
