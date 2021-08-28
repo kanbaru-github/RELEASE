@@ -71,6 +71,8 @@ ja:
     sessions:
       customer:
         signed_in: "ログインしました"
+      admin:
+        signed_in: "ログインしました"
     shared:
       links:
         back: "戻る"
