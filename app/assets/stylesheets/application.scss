@@ -58,6 +58,19 @@ footer {
   text-align: left;
 }
 
+// 量が少ないページ
+@mixin little($color: #000, $fSize: 20px, $mHeight: 600px) {
+   color: $color;
+   font-size: $fSize;
+   min-height: $mHeight;
+ }
+ .test {
+   @include little(white, 20px);
+ }
+ .customer-edit {
+   @include little();
+ }
+
 // topページ
 .top-bg {
   background-image: url('top_bg.jpeg');
