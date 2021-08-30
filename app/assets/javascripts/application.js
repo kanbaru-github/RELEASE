@@ -22,6 +22,7 @@
 // 入力フォーム
 //初回読み込み、リロード、ページ切り替えで動く。
 $(document).on('turbolinks:load',function(){
+  // turbolinks:load:ページが読み込まれた時に発火
   // キーが離されたときに発生
   $('.form-js-input').on('keyup', function () {
     if ($(this).val()) {
@@ -30,13 +31,16 @@ $(document).on('turbolinks:load',function(){
       $(this).removeClass('not-empty');
     }
   });
-});
 
-// トップページ
+  // トップページ
 $(function() {
   // 一旦hide()で隠してフェードインさせる
   $('.top-message').hide().fadeIn('slow');
 });
+
+});
+
+
 
 // aboutページ
 // テキストアニメーション
