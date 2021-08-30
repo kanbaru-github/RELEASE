@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'homes#top'
     resources :posts, only: [:index, :destroy]
+    get 'posts/search', to: 'posts#search', as: 'post_search'
     resources :categories, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
   end
