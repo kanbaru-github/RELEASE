@@ -16,19 +16,19 @@
       <% if admin_signed_in? %>
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="admin_posts_path">
+            <a class="nav-link" href="/admin/posts">
               <%= image_tag 'post.png', size:"20x20" %>
               投稿一覧
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="admin_customers_path">
+            <a class="nav-link" href="/admin/customers">
               <%= image_tag 'customers.png', size:"20x20" %>
               会員一覧
             </a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="admin_categories_path" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="/admin/categories" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= image_tag 'category.png', size:"20x20" %>
               カテゴリー一覧
             </a>
@@ -40,7 +40,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="destroy_admin_session_path">
+            <a class="nav-link disabled" href="/admin/sign_out">
               <%= image_tag 'log_out.png', size:"20x20" %>
               ログアウト
             </a>
