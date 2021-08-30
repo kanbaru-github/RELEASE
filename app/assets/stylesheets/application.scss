@@ -73,7 +73,7 @@ footer {
 
 // topページ
 .top-bg {
-  background-image: url('top_bg.jpeg');
+  background-image: image-url('top_bg.jpg');
   width: 100%;
   height: 600px;
   background-size: cover;
@@ -88,7 +88,7 @@ footer {
 
 // aboutページ
 .about-bg {
-  background-image: url('about-bg.png');
+  background-image: image-url('about-bg.png');
   background-repeat: no-repeat;
   background-position-x: center;
   min-height: 800px;
