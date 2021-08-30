@@ -45,7 +45,7 @@ Post.create!(
     {
       customer_id: 1,
       category_id: 1,
-      image: File.open("./app/assets/images/test.jpeg"),
+      image: File.open("./app/assets/images/test.jpg"),
       text: "test1",
     },
     {
