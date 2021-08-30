@@ -70,6 +70,9 @@ footer {
  .customer-edit {
    @include little();
  }
+ .category-edit {
+   @include little();
+ }
 
 // topページ
 .top-bg {
@@ -239,7 +242,7 @@ li:nth-child(3) a {
 .mini-heading {
   margin-left: 30px;
   position: relative;
-  padding: 1rem .5rem;
+  padding: 1rem .5rem 0rem;
 }
 .mini-heading:after {
   position: absolute;
@@ -437,6 +440,9 @@ li:nth-child(3) a {
   padding-left: 1rem;
   padding-top: 0rem;
   color: #efa04c;
+}
+.table {
+  min-width: 500px;
 }
 
 @media screen and (min-width: 768px) {

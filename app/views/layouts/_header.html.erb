@@ -16,76 +16,76 @@
       <% if admin_signed_in? %>
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/admin/posts">
+            <a class="nav-link text-dark expand" href="/admin/posts">
               <%= image_tag 'post.png', size:"20x20" %>
               投稿一覧
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/admin/customers">
+            <a class="nav-link text-dark expand" href="/admin/customers">
               <%= image_tag 'customers.png', size:"20x20" %>
               会員一覧
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/admin/categories">
+            <a class="nav-link text-dark expand" href="/admin/categories">
               <%= image_tag 'category.png', size:"20x20" %>
               カテゴリー一覧
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="/admin/sign_out">
+            <a class="nav-link text-dark expand" href="/admin/sign_out" data-method="delete">
               <%= image_tag 'log_out.png', size:"20x20" %>
               ログアウト
             </a>
           </li>
         </ul>
       <% elsif customer_signed_in? %>
-        <ul class="flex gNav-menu">
-          <li class="list-unstyled menu-list">
-            <%= link_to homes_about_path, class: 'text-dark expand' do %>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link text-dark expand" href="/homes/about">
               <%= image_tag 'about.png', size:"20x20" %>
               ABOUT
-            <% end %>
+            </a>
           </li>
-          <li class="list-unstyled menu-list">
-            <%= link_to posts_path, class: 'text-dark expand' do %>
+          <li class="nav-item">
+            <a class="nav-link text-dark expand" href="/posts">
               <%= image_tag 'post.png', size:"20x20" %>
               投稿一覧
-            <% end %>
+            </a>
           </li>
-          <li class="list-unstyled menu-list">
-            <%= link_to mypage_path, class: 'text-dark expand' do %>
-              <%= image_tag 'my_page.png', size:"20x20" %>
+          <li class="nav-item">
+            <a class="nav-link text-dark expand" href="/customers/mypage">
+              <%= image_tag 'my-page.png', size:"20x20" %>
               マイページ
-            <% end %>
+            </a>
           </li>
-          <li class="list-unstyled menu-list">
-            <%= link_to destroy_customer_session_path, method: :delete, class: 'text-dark expand' do %>
+          <li class="nav-item text-dark expand">
+            <a class="nav-link" href="/customers/sign_out" data-method="delete">
               <%= image_tag 'log_out.png', size:"20x20" %>
               ログアウト
-            <% end %>
+            </a>
           </li>
         </ul>
       <% else %>
-        <ul class="flex gNav-menu">
-          <li class="list-unstyled menu-list">
-            <%= link_to homes_about_path, class: 'text-dark expand' do %>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link text-dark expand" href="/homes/about">
               <%= image_tag 'about.png', size:"20x20" %>
               ABOUT
-            <% end %>
+            </a>
           </li>
-          <li class="list-unstyled menu-list">
-            <%= link_to new_customer_registration_path, class: 'text-dark expand' do %>
-              <%= image_tag 'sign_up.png', size:"20x20" %>
-              新規登録
-            <% end %>
-          </li>
-          <li class="list-unstyled menu-list">
-            <%= link_to new_customer_session_path, class: 'text-dark expand' do %>
+          <li class="nav-item">
+            <a class="nav-link text-dark expand" href="/customers/sign_in">
               <%= image_tag 'log_in.png', size:"20x20" %>
               ログイン
-            <% end %>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark expand" href="/customers/sign_up">
+              <%= image_tag 'log_out.png', size:"20x20" %>
+              新規登録
+            </a>
           </li>
         </ul>
       <% end %>
