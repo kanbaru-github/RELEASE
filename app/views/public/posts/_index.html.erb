@@ -3,15 +3,18 @@
   <% if posts.present? %>
     <% posts.each do |post| %>
       <% unless current_customer.muting?(post.customer) %>
+      
         <tr id="post_<%= post.id %>">
           <td class="create-time"><%= post.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
           <td><%= post.category.name %></td>
           <td>
-            <div class="expand-image">
+            <div class="expand-image_<%= post.id %> expand-image">
+              <!--_<#%= post.id %>をつけることでIDをつけて識別できるように-->
+              <!--でないと全て同じ画像になる-->
               <%= attachment_image_tag(post, :image, :fill, 50, 50) %>
             </div>
-            <div class="modal">
-          　　<div class="big-img">
+            <div class="modal_<%= post.id %> modal">
+          　　<div class="big-img_<%= post.id %> big-img">
           　　    <%= attachment_image_tag(post, :image, :fill, 800, 800) %>
           　　</div>
           　　<p class="close-btn"><a href="">✖</a></p>
@@ -35,3 +38,25 @@
   <% end %>
   </tbody>
 </table>
+
+<script>
+  // 画像拡大
+<% posts.present? && posts.each do |post| %>
+// scriptでもル-プ処理をしないと同じIDにならない
+$(function() {
+  $('.expand-image_<%= post.id %>').click(function() {
+      $('.big-img_<%= post.id %>').css('display', 'block')
+      // display: none;をblockに変更する
+    $('.modal_<%= post.id %>').fadeIn();
+    $('body,html').css('overflow-y', 'hidden');
+    // 画像が画面からはみ出る場合は非表示にする。画面のブレ防止のため。
+    return false
+  });
+  $('.close-btn').click(function() {
+    $('.modal_<%= post.id %>').fadeOut();
+    $('body,html').css('overflow-y', 'visible');
+    return false
+  });
+})
+<% end %>
+</script>

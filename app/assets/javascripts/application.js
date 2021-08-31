@@ -73,23 +73,6 @@ $(function() {
   $('.thanks-message').hide().fadeIn('slow');
 });
 
-// 画像拡大
-$(function() {
-  $('.expand-image').click(function() {
-      $('.big-img').css('display', 'block')
-      // display: none;をblockに変更する
-    $('.modal').fadeIn();
-    $('body,html').css('overflow-y', 'hidden');
-    // 画像が画面からはみ出る場合は非表示にする。画面のブレ防止のため。
-    return false
-  });
-  $('.close-btn').click(function() {
-    $('.modal').fadeOut();
-    $('body,html').css('overflow-y', 'visible');
-    return false
-  });
-})
-
 // インクリメンタルサーチ
 document.addEventListener('turbolinks:load',function(){
 $('.search__form__input').on('keyup', function(e){

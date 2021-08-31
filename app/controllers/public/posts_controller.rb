@@ -69,7 +69,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:text, :category_id, :sympathies, :cheers)
+    params.require(:post).permit(:text, :category_id, :sympathies, :cheers, :image)
   end
 
   def ensure_correct_customer
