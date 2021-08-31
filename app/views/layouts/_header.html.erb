@@ -13,7 +13,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <% if admin_signed_in? %>
+      <% if admin_signed_in? && !customer_signed_in? %>
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <a class="nav-link text-dark expand" href="/admin/posts">
@@ -40,7 +40,7 @@
             </a>
           </li>
         </ul>
-      <% elsif customer_signed_in? %>
+      <% elsif customer_signed_in? && !admin_signed_in? %>
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <a class="nav-link text-dark expand" href="/homes/about">

@@ -1,14 +1,9 @@
 Rails.application.routes.draw do
 
-  # 多言語化
-  # scope "(:locale)", locale: /en|ja/ do
-    # get '/:locale' => 'static_pages#home'
-
   devise_for :admin, controllers: {
     sessions: 'admin/sessions',
   }
   namespace :admin do
-    root 'homes#top'
     resources :posts, only: [:index, :destroy]
     get 'posts/search', to: 'posts#search', as: 'post_search'
     resources :categories, only: [:index, :create, :edit, :update]
@@ -42,7 +37,5 @@ Rails.application.routes.draw do
     post 'contacts/back', to: 'contacts#back', as: 'back'
     get 'thanks', to: 'contacts#thanks', as: 'thanks'
   end
-
-# end
 
 end
