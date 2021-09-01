@@ -3,7 +3,7 @@
   <% if posts.present? %>
     <% posts.each do |post| %>
       <% unless current_customer.muting?(post.customer) %>
-      
+      <!--ミュートにしたユーザーが投稿したものを非表示に-->
         <tr id="post_<%= post.id %>">
           <td class="create-time"><%= post.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
           <td><%= post.category.name %></td>

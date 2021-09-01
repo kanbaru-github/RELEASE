@@ -4,7 +4,9 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # ステータス
   scope :only_active, -> { where(is_active: true) }
+  # emailバリデーション
   validates :email, presence: true, uniqueness: true
 
   has_many :posts

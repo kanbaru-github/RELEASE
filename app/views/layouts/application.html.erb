@@ -46,7 +46,7 @@
     <footer>
       <div class="container"></div>
         <div class="row">
-          <div class="mx-auto">
+          <div class="mx-auto footer-text">
           <% if admin_signed_in? %>
             <table width="500">
               <tr>
@@ -60,12 +60,12 @@
               </tr>
             </table>
           <% else %>
-            <%= link_to new_contact_path, class: 'text-dark expand' do %>
+            <%= link_to new_contact_path, class: 'text-light expand' do %>
               <%= image_tag 'contact.png', size:"20x20" %>
                 お問合せ、ご意見・ご要望はこちらから
               <% end %>
           <% end %>
-          <h6 style="text-align: center; padding-top: 10px;">© 2021 RELEASE Inc.</h6>
+          <h6>© 2021 RELEASE Inc.</h6>
           </div>
         </div>
       </div>

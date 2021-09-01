@@ -35,12 +35,11 @@ $(document).on('turbolinks:load',function(){
   // トップページ
 $(function() {
   // 一旦hide()で隠してフェードインさせる
-  $('.top-message').hide().fadeIn('slow');
+  $('.top-message').hide().fadeIn(1500);
+  // 1500ミリ秒
 });
 
 });
-
-
 
 // aboutページ
 // テキストアニメーション

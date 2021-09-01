@@ -30,10 +30,13 @@ main {
 footer {
   padding: 30px 0;
   font-size: 18px;
-  font-color: #fff;
-  background-color: #ccc;
+  background-color: #000;
 }
-
+.footer-text {
+  text-align: center;
+  padding-top: 10px;
+  color: #fff;
+}
 // ページのトップに戻るボタン
 #top {
   position: fixed;
@@ -45,17 +48,12 @@ footer {
 }
 
 // header
-.list-unstyled {
-  display: inline-block;
-  margin: 0 20px;
-}
-.header-user {
-  padding-left: 0;
-  margin-left: 0;
-  text-align: left;
-  float: left;
-  color: #32cd32;
-  text-align: left;
+.navbar-nav,
+.mr-auto {
+  flex: 1;
+  margin: auto !important;
+  display: flex;
+  justify-content: space-around;
 }
 
 // 量が少ないページ
@@ -64,14 +62,14 @@ footer {
    font-size: $fSize;
    min-height: $mHeight;
  }
- .test {
-   @include little(white, 20px);
+ .log-in {
+    @include little();
  }
  .customer-edit {
-   @include little();
+    @include little();
  }
  .category-edit {
-   @include little();
+    @include little();
  }
 
 // topページ
@@ -82,11 +80,12 @@ footer {
   background-size: cover;
 }
 .top-message {
-  padding: 100px;
-  font-size: 80px;
+  padding: 80px;
+  font-size: 40px;
   text-align: center;
   display: none;
   color: #fff;
+  font-family: 'Yu Mincho Light','YuMincho','Yu Mincho','游明朝体',sans-serif;
 }
 
 // aboutページ
@@ -391,8 +390,9 @@ li:nth-child(3) a {
   font-size: x-small;
 }
 .text {
-  width:400px; word-wrap: break-word;
-  // 超えたら...表示
+  width: 400px; word-wrap: break-word;
+  // 超えたら...と表示
+  font-family: 'HanziPen SC',sans-serif;
 }
 
 // 共感、応援の吹き出し
@@ -445,9 +445,33 @@ li:nth-child(3) a {
   min-width: 500px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 768px) {
 
   .top-bg {
-    height: 800px;
+    min-height: 600px;
   }
+  .top-message {
+    padding: 50px;
+    font-size: 36px;
+  }
+
+  @mixin little($color: #000, $fSize: 20px, $mHeight: 600px) {
+   color: $color;
+   font-size: $fSize;
+   min-height: $mHeight;
+ }
+ .test {
+   @include little(white, 20px);
+ }
+ .customer-edit {
+   @include little();
+ }
+ .category-edit {
+   @include little();
+ }
+
 }
+
+
+
+

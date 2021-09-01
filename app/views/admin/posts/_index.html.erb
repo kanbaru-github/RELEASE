@@ -3,14 +3,14 @@
   <% if posts.present? %>
     <% posts.each do |post| %>
       <tr>
-        <td><%= post.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
+        <td class="create-time"><%= post.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
         <td><%= post.category.name %></td>
         <td>
-          <div class="expand-image">
+          <div class="expand-image_<%= post.id %> expand-image">
             <%= attachment_image_tag(post, :image, :fill, 50, 50) %>
           </div>
-          <div class="modal">
-        　　<div class="big-img">
+          <div class="modal_<%= post.id %> modal">
+        　　<div class="big-img_<%= post.id %> big-img">
         　　    <%= attachment_image_tag(post, :image, :fill, 800, 800) %>
         　　</div>
         　　<p class="close-btn"><a href="">✖</a></p>
@@ -18,7 +18,7 @@
         </td>
         <td class="text"><p><%= post.text.truncate(100) %></p></td>
         <td><%= image_tag("sympathy.png", size:"20x20") %>&nbsp;<%= post.sympathies.count %></td>
-        <!--&nbsp;(ノーブレークスペース):半角スペースを入れたい時。本来は改行の禁止-->
+        <!--&nbsp;(ノーブレークスペース):半角スペースを入れたい時。本来の意味は改行の禁止-->
         <td><%= image_tag("cheer.png", size:"20x20") %>&nbsp;<%= post.cheers.count %></td>
         <td><%= link_to '削除する', admin_post_path(post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
       </tr>
