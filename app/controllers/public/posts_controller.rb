@@ -46,6 +46,7 @@ class Public::PostsController < ApplicationController
       @categories = Category.all
       render :new
     end
+
   end
 
   def edit

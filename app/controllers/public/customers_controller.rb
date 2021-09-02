@@ -1,6 +1,14 @@
 class Public::CustomersController < ApplicationController
+
   before_action :authenticate_customer!
   before_action :set_current_customer
+
+  def create
+    @customer = Customer.new(customer_params)
+    if @customer.save
+      WelcomeMailer.send_when_create(@customer).deliver
+    end
+  end
 
   def show
     @customer = current_customer

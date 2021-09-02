@@ -70,7 +70,7 @@ Rails.application.configure do
     # HELOドメイン
     user_name: ENV['SMTP_USERNAME'],
     # メール送信に使用するgmailのアカウント
-    password: ENV['SMTP_PASSWORD'],
+    password: ENV['SMTP_PASSWORD']
     # メール送信に使用するgmailのパスワード
   }
 
