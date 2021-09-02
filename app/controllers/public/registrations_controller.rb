@@ -6,6 +6,8 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # end
 
   def after_sign_up_path_for(resource)
+    current_customer.create
+    WelcomeMailer.send_when_create(current_customer).deliver
     posts_path
   end
 

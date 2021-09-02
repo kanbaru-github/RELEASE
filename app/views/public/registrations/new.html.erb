@@ -47,5 +47,10 @@
   <div class="row mt-2 pb-5">
     <div class="col-12 text-center"><%= render "public/shared/links" %></div>
   </div>
+  
+  <%= video_tag("/assets/videos/authentication.mp4", :autoplay => true, :loop => true, muted: => true, style: "width:100%;") %>
+  <!--autoplay => true 自動再生を有効-->
+  <!--loop => true 繰り返し再生-->
+  <!--muted: => true 音を出さないように指定-->
 
 </div>

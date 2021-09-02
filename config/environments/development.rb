@@ -63,10 +63,15 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     port: 587,
+    # SMTPサーバーのポート番号
     address: 'smtp.gmail.com',
+    # SMTPサーバーのホスト名
     domain: 'smtp.gmail.com',
+    # HELOドメイン
     user_name: ENV['SMTP_USERNAME'],
+    # メール送信に使用するgmailのアカウント
     password: ENV['SMTP_PASSWORD'],
+    # メール送信に使用するgmailのパスワード
   }
 
   config.web_console.whitelisted_ips = '60.74.201.90'
