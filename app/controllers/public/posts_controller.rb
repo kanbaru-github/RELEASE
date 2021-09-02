@@ -1,5 +1,5 @@
 class Public::PostsController < ApplicationController
-  
+
   before_action :authenticate_customer!
   before_action :ensure_correct_customer, only: [:edit, :update, :destroy]
 
@@ -36,9 +36,11 @@ class Public::PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.customer_id = current_customer.id
-    if @post.save
+    post = Post.new(post_params)
+    post.customer_id = current_customer.id
+    # API側から返ってきた値をもとにスコアを作成
+    post.score = Language.get_data(post_params[:text])
+    if post.save
       redirect_to mypage_path, notice: '投稿しました！'
     else
       @categories = Category.all

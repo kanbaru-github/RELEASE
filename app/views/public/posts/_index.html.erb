@@ -20,8 +20,11 @@
           　　<p class="close-btn"><a href="">✖</a></p>
             </div>
           </td>
-          <td class="text"><p><%= post.text.truncate(100) %></p></td>
-          <!--truncate():文字数制限-->
+          <td>
+            <p class="text"><%= post.text.truncate(100) %></p>
+            <!--truncate():文字数制限-->
+            <p class="sentiment-score">本文の感情分析スコア[<%= post.score %>]</p>
+          </td>
           <% if post.customer == current_customer %>
             <td><%= link_to '編集する', edit_post_path(post), class: "btn btn-sm btn-success" %></td>
             <td><%= link_to '削除する', post_path(post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>

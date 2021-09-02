@@ -16,7 +16,10 @@
         　　<p class="close-btn"><a href="">✖</a></p>
           </div>
         </td>
-        <td class="text"><p><%= post.text.truncate(100) %></p></td>
+        <td class="text">
+          <p><%= post.text.truncate(100) %></p>
+          <p class="sentiment-score">本文の感情分析スコア[<%= post.score %>]</p>
+        </td>
         <td><%= image_tag("sympathy.png", size:"20x20") %>&nbsp;<%= post.sympathies.count %></td>
         <!--&nbsp;(ノーブレークスペース):半角スペースを入れたい時。本来の意味は改行の禁止-->
         <td><%= image_tag("cheer.png", size:"20x20") %>&nbsp;<%= post.cheers.count %></td>
