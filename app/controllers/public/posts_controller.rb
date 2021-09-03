@@ -40,7 +40,7 @@ class Public::PostsController < ApplicationController
     post.customer_id = current_customer.id
     # API側から返ってきた値をもとにスコアを作成
     post.score = Language.get_data(post_params[:text])
-    if post.save
+    if post.save!
       redirect_to mypage_path, notice: '投稿しました！'
     else
       @categories = Category.all
