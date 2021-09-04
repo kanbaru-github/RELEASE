@@ -1,10 +1,10 @@
-<table class='table'>
-  <tbody>
+<table class='table sm-table'>
+  <tbody class="sm-tbody">
   <% if posts.present? %>
     <% posts.each do |post| %>
       <% unless current_customer.muting?(post.customer) %>
       <!--ミュートにしたユーザーが投稿したものを非表示に-->
-        <tr id="post_<%= post.id %>">
+        <tr id="post_<%= post.id %>" class="sm-tr">
           <td>
             <div class="expand-image_<%= post.id %> expand-image">
               <!--_<#%= post.id %>をつけることでIDをつけて識別できるように-->
@@ -18,7 +18,7 @@
           <p class="close-btn"><a href="">✖</a></p>
             </div>
           </td>
-          <td>
+          <td class="sp_td">
             <p class="text"><%= post.text.truncate(100) %></p>
             <!--truncate():文字数制限-->
             <p class="sentiment-score">本文の感情分析スコア[<%= post.score %>]</p>
@@ -26,26 +26,25 @@
             <div class="sm-tag-heading"><%= post.category.name %></div>
           </td>
           <% if post.customer == current_customer %>
-            <td>
-              <%= link_to edit_post_path(post) do %>
+            <td class="wrapper_button">
+              <%= button_to edit_post_path(post), method: :get do %>
+              <!--link_toはデフォルトの設定が、HTTP GETを表す。一方で、button_toは HTTP POSTを表す。-->
                 <div class="ballon">
                   <%= image_tag("edit.png", size:"30x30", class: "expand") %>
-                  <span class="ballon-text">編集する</span>
+                    <span class="ballon-text">編集する</span>
                 </div>
               <% end %>
-            </td>
-            <td>
               <%= button_to post_path(post), method: :delete, data: { confirm: '本当に消しますか？' } do %>
-                <div class="ballon">
+                <div class="wrapper_button">
                   <%= image_tag("delete.png", size:"30x30", class: "expand") %>
-                  <span class="ballon-text">削除する</span>
-                </div>
-              <% end %>
+                    <span class="ballon-text">削除する</span>
+                <% end %>
+              </div>
             </td>
           <% else %>
-            <td class="sympathy-btn"><%= render "public/sympathies/sympathy-btn", post: post %></td>
-            <td class="cheer-btn"><%= render "public/cheers/cheer-btn", post: post %></td>
-            <td>
+            <td class=wrapper_button>
+              <div class="sympathy-btn"><%= render "public/sympathies/sympathy-btn", post: post %></div>
+              <div class="cheer-btn"><%= render "public/cheers/cheer-btn", post: post %></div>
               <%= button_to customer_relationships_path(post.customer.id), method: :post do %>
                 <div class="ballon">
                   <%= image_tag("mute.png", size:"30x30", class: "expand") %>

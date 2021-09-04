@@ -309,12 +309,6 @@ li:nth-child(3) a {
   background: #fff;
 }
 
-.new-post {
-  position: fixed;
-  right: 20px;
-  bottom: 100px;
-}
-
 // フラッシュメッセージ
 .notice {
   color: #32cd32;
@@ -405,7 +399,7 @@ li:nth-child(3) a {
   font-size: x-small;
 }
 .text {
-  width: 500px; word-wrap: break-word;
+  width: 100%; word-wrap: break-word;
   // 超えたら...と表示
   font-family: 'HanziPen SC',sans-serif;
 }
@@ -413,9 +407,10 @@ li:nth-child(3) a {
 .sm-tag-heading {
   position: relative;
   display: inline-block;
-  height: 10px;
+  height: 32px;
   margin-left: 30px;
-  padding: 1rem 2rem 1rem 3rem;
+  padding: 5px 2rem 0 3rem;
+  // rem:文字分
   color: #fff;
   background: #fa4141;
 }
@@ -437,12 +432,6 @@ li:nth-child(3) a {
   content: '';
   border-radius: 50%;
   background: #fff;
-}
-
-.new-post {
-  position: fixed;
-  right: 20px;
-  bottom: 100px;
 }
 
 // 共感、応援の吹き出し
@@ -491,11 +480,19 @@ li:nth-child(3) a {
   padding-top: 0rem;
   color: #efa04c;
 }
-.table {
-  min-width: 500px;
+
+.control-botton {
+  bottom: 20px;
+  right: 20px;
+  left: auto;
 }
 
+.new-post { margin-bottom: 10px; }
+
+.wrapper_button { display: flex; gap: 4px; }
+
 @media screen and (max-width: 768px) {
+  .sp_td  { width: 230px; }
 
   .top-bg {
     min-height: 600px;
@@ -505,8 +502,24 @@ li:nth-child(3) a {
     font-size: 36px;
   }
 
+  .sm-tbody {
+    display: block;
+    width: 100%;
+  }
   .sm-table {
-    width: 20px;
+    display: block;
+    width: 100%;
+    padding: 6px;
+  }
+
+  .text {
+  word-break: break-all;
+  // 超えたら...と表示
+  font-family: 'HanziPen SC',sans-serif;
+}
+
+  .sm-tr {
+    max-width: 100%;
   }
 
   @mixin little($color: #000, $fSize: 20px, $mHeight: 600px) {
