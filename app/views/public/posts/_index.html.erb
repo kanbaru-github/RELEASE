@@ -12,10 +12,10 @@
               <%= attachment_image_tag(post, :image, :fill, 50, 50) %>
             </div>
             <div class="modal_<%= post.id %> modal">
-          　　<div class="big-img_<%= post.id %> big-img">
-          　　    <%= attachment_image_tag(post, :image, :fill, 800, 800) %>
-          　　</div>
-          　　<p class="close-btn"><a href="">✖</a></p>
+            <div class="big-img_<%= post.id %> big-img">
+                <%= attachment_image_tag(post, :image, :fill, 800, 800) %>
+          </div>
+          <p class="close-btn"><a href="">✖</a></p>
             </div>
           </td>
           <td>
@@ -27,7 +27,7 @@
           </td>
           <% if post.customer == current_customer %>
             <td>
-              <%= button_to edit_post_path(post) do %>
+              <%= link_to edit_post_path(post) do %>
                 <div class="ballon">
                   <%= image_tag("edit.png", size:"30x30", class: "expand") %>
                   <span class="ballon-text">編集する</span>
