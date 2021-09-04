@@ -5,8 +5,6 @@
       <% unless current_customer.muting?(post.customer) %>
       <!--ミュートにしたユーザーが投稿したものを非表示に-->
         <tr id="post_<%= post.id %>">
-          <td class="create-time"><%= post.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
-          <td><%= post.category.name %></td>
           <td>
             <div class="expand-image_<%= post.id %> expand-image">
               <!--_<#%= post.id %>をつけることでIDをつけて識別できるように-->
@@ -24,14 +22,37 @@
             <p class="text"><%= post.text.truncate(100) %></p>
             <!--truncate():文字数制限-->
             <p class="sentiment-score">本文の感情分析スコア[<%= post.score %>]</p>
+            <div class="create-time"><%= post.created_at.strftime("%Y/%m/%d %H:%M:%S") %></div>
+            <div class="sm-tag-heading"><%= post.category.name %></div>
           </td>
           <% if post.customer == current_customer %>
-            <td><%= link_to '編集する', edit_post_path(post), class: "btn btn-sm btn-success" %></td>
-            <td><%= link_to '削除する', post_path(post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
+            <td>
+              <%= button_to edit_post_path(post) do %>
+                <div class="ballon">
+                  <%= image_tag("edit.png", size:"30x30", class: "expand") %>
+                  <span class="ballon-text">編集する</span>
+                </div>
+              <% end %>
+            </td>
+            <td>
+              <%= button_to post_path(post), method: :delete, data: { confirm: '本当に消しますか？' } do %>
+                <div class="ballon">
+                  <%= image_tag("delete.png", size:"30x30", class: "expand") %>
+                  <span class="ballon-text">削除する</span>
+                </div>
+              <% end %>
+            </td>
           <% else %>
             <td class="sympathy-btn"><%= render "public/sympathies/sympathy-btn", post: post %></td>
             <td class="cheer-btn"><%= render "public/cheers/cheer-btn", post: post %></td>
-            <td><%= link_to "非表示にする", customer_relationships_path(post.customer.id), method: :post, class: "btn btn-success" %></td>
+            <td>
+              <%= button_to customer_relationships_path(post.customer.id), method: :post do %>
+                <div class="ballon">
+                  <%= image_tag("mute.png", size:"30x30", class: "expand") %>
+                  <span class="ballon-text">非表示にする</span>
+                </div>
+              <% end %>
+            </td>
           <% end %>
         </tr>
       <% end %>

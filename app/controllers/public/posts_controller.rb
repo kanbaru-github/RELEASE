@@ -54,6 +54,7 @@ class Public::PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
+      post.score = Language.get_data(post_params[:text])
       redirect_to mypage_path, notice: '更新しました！'
     else
       render :edit

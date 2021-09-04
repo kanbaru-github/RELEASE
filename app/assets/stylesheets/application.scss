@@ -405,9 +405,44 @@ li:nth-child(3) a {
   font-size: x-small;
 }
 .text {
-  width: 400px; word-wrap: break-word;
+  width: 500px; word-wrap: break-word;
   // 超えたら...と表示
   font-family: 'HanziPen SC',sans-serif;
+}
+// カテゴリー
+.sm-tag-heading {
+  position: relative;
+  display: inline-block;
+  height: 10px;
+  margin-left: 30px;
+  padding: 1rem 2rem 1rem 3rem;
+  color: #fff;
+  background: #fa4141;
+}
+.sm-tag-heading:before {
+  position: absolute;
+  top: 0;
+  left: -30px;
+  content: '';
+  border-width: 16px 30px 16px 0;
+  border-style: solid;
+  border-color: transparent #fa4141 transparent transparent;
+}
+.sm-tag-heading:after {
+  position: absolute;
+  top: calc(50% - 7px);
+  left: -10px;
+  width: 14px;
+  height: 14px;
+  content: '';
+  border-radius: 50%;
+  background: #fff;
+}
+
+.new-post {
+  position: fixed;
+  right: 20px;
+  bottom: 100px;
 }
 
 // 共感、応援の吹き出し
@@ -468,6 +503,10 @@ li:nth-child(3) a {
   .top-message {
     padding: 50px;
     font-size: 36px;
+  }
+
+  .sm-table {
+    width: 20px;
   }
 
   @mixin little($color: #000, $fSize: 20px, $mHeight: 600px) {

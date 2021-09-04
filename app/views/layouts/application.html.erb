@@ -33,7 +33,7 @@
       <%= yield %>
       <% if customer_signed_in? %>
         <div class="new-post">
-          <%= link_to image_tag("new_post.jpg", size:"50x50"), new_post_path, class: "expand" %>
+          <%= link_to image_tag("new.png", size:"50x50"), new_post_path, class: "expand" %>
         </div>
       <% end %>
       <span id="top" class="expand">
