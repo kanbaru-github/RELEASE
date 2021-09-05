@@ -241,6 +241,25 @@ li:nth-child(3) a {
     cursor: pointer;
   }
 }
+// 動画背景
+.video-content {
+  width: 100%;
+}
+.bg-video {
+  position: relative;
+}
+.bg-video p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 210px;
+    font-family: 'Papyrus-Condensed',sans-serif;
+}
+
 
 // 見出し
 .heading {
@@ -501,6 +520,10 @@ li:nth-child(3) a {
     padding: 50px;
     font-size: 36px;
   }
+
+  .bg-video p {
+    font-size: 90px;
+}
 
   .sm-tbody {
     display: block;

@@ -1,7 +1,11 @@
 <div class="container pt-5">
 
-  <div class="row">
-    <div class="heading"><h5>会員ログイン</h5></div>
+  <div class="bg-video">
+    <%= video_tag("/videos/authentication.mp4", autoplay: :true, loop: :true, muted: :true, class: 'video-content') %>
+    <!--autoplay => true 自動再生を有効-->
+    <!--loop => true 繰り返し再生-->
+    <!--muted: => true 音を出さないように指定-->
+    <p>LOG IN</p>
   </div>
 
   <%= form_with model: @customer, url: customer_session_path, class:"contact-form" ,local: true do |f| %>
