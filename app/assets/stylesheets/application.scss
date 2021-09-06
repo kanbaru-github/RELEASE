@@ -245,10 +245,24 @@ li:nth-child(3) a {
 .video-content {
   width: 100%;
 }
-.bg-video {
+.bg-video1 {
   position: relative;
 }
-.bg-video p {
+.bg-video2 {
+  position: relative;
+}
+.bg-video1 p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 200px;
+    font-family: 'Papyrus-Condensed',sans-serif;
+}
+.bg-video2 p {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -259,7 +273,6 @@ li:nth-child(3) a {
     font-size: 210px;
     font-family: 'Papyrus-Condensed',sans-serif;
 }
-
 
 // 見出し
 .heading {
@@ -521,9 +534,12 @@ li:nth-child(3) a {
     font-size: 36px;
   }
 
-  .bg-video p {
+  .bg-video1 p {
+    font-size: 80px;
+  }
+  .bg-video2 p {
     font-size: 90px;
-}
+  }
 
   .sm-tbody {
     display: block;

@@ -1,6 +1,6 @@
-<div class="container pt-5">
+<div class="container pt-3">
 
-  <div class="bg-video">
+  <div class="bg-video2">
     <%= video_tag("/videos/authentication.mp4", autoplay: :true, loop: :true, muted: :true, class: 'video-content') %>
     <!--autoplay => true 自動再生を有効-->
     <!--loop => true 繰り返し再生-->
@@ -14,14 +14,14 @@
     <p class="text-red"><%= flash[:danger] %></p>
   <% end %>
 
-    <div class="row mt-5">
+    <div class="row">
       <div class="col-8 mx-auto col-lg-5 form-field">
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input-text form-js-input" %>
         <label for="staticEmail" class="label">Email</label>
       </div>
     </div>
 
-    <div class="row mt-3">
+    <div class="row">
       <div class="col-8 mx-auto col-lg-5 form-field">
         <%= f.password_field :password, autocomplete: "current-password", class:"input-text form-js-input" %>
         <label for="inputPassword" class="label">Password</label>
