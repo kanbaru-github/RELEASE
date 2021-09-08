@@ -1,4 +1,4 @@
-<div class="container background" style="min-height: 600px;">
+<div class="container background">
 
   <div class="notice"><%= flash[:notice] %></div>
 
@@ -7,16 +7,16 @@
   </div>
 
   <div class="row my-1">
-    <h5 class="mini-heading mr-4">カテゴリー検索</h5>
+    <div class="mini-heading mr-4"><h5>カテゴリー検索</h5></div>
   </div>
-  <div class="row">
+  <div class="row mt-2">
     <% @categories.each do |category| %>
 			<div class="category-seach tag-heading expand"><%= link_to category.name, posts_path(category_id: category.id), class: 'text-dark' %></div>
 		<% end %>
   </div>
 
   <div class="row my-1">
-    <h5 class="mini-heading mr-5">テキスト検索</h5>
+    <div class="mini-heading mr-5"><h5>テキスト検索</h5></div>
     <div class="search ml-3 mt-3">
     <%= form_with url: post_search_path, method: :get, class: "search__form" do |f| %>
       <%= f.text_field :keyword, required: true, class: "search__form__input searchTerm" %>
@@ -28,16 +28,16 @@
   </div>
 
   <div class="row my-1">
-    <div class="mini-heading mr-5"><h5>並び替え</h5></div>
+    <div class="mini-heading"><h5>並び替え</h5></div>
   </div>
   <div class="row">
-    <div class="ml-5 mt-4">
+    <div class="ml-5 mt-2">
       <%= link_to posts_path(sort: 'sympathy'), class: "expand sort" do %>
         <%= image_tag 'sympathy.png', size: "20x20" %>
         <span>共感数が多い順</span>
       <% end %>
     </div>
-    <div class="ml-5 mt-4">
+    <div class="ml-5 mt-2">
       <%= link_to posts_path(sort: 'cheer'), class: "expand sort" do %>
         <%= image_tag 'cheer.png', size:"20x20" %>
         <span>応援数が多い順</span>

@@ -293,7 +293,7 @@ li:nth-child(3) a {
 }
 .mini-heading:after {
   position: absolute;
-  bottom: -5px;
+  bottom: 0;
   left: 0;
   width: 100%;
   height: 6px;
@@ -341,7 +341,8 @@ li:nth-child(3) a {
   border-radius: 50%;
   background: #fff;
 }
-.sort {
+a.sort {
+  // expandと差別するため
   color: #000;
   text-decoration: underline;
 }
