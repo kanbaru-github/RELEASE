@@ -175,11 +175,11 @@
     </script>
   </div>
 
-  <%#= form_with url: customer_search_path(@customer), method: :get do |f| %>
-    <%#= f.date_field :created_at %>
+  <%= form_with url: customer_search_path(@customer), method: :get do |f| %>
+    <%= f.date_field :created_at %>
     <!--年、月、日等のテキストフィールドが１つにまとまっており、カレンダー入力ができるようになっている-->
-    <%#= f.submit '検索', class: 'btn btn-primary'  %>
-  <%# end %>
+    <%= f.submit '検索', class: 'btn btn-primary'  %>
+  <% end %>
 
   <div id="search_result">
     <% if @search_post.present? %>
@@ -204,20 +204,9 @@
   </div>
 
   <div class="row">
-    <table class='table'>
-      <tbody>
-        <% @posts.each do |post| %>
-          <tr>
-            <td><%= post.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
-            <td><%= post.category.name %></td>
-            <td><%= attachment_image_tag(post, :image, :fill, 50, 50) %></td>
-            <td width="500"><%= post.text %></td>
-            <td><%= link_to '編集する', edit_post_path(post), class: "btn btn-sm btn-success" %></td>
-            <td><%= link_to '削除する', post_path(post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <div class="col">
+      <%= render "public/posts/index", posts: @posts %>
+    </div>
   </div>
 
 </div>
