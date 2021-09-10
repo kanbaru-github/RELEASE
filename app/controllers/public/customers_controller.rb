@@ -32,13 +32,23 @@ class Public::CustomersController < ApplicationController
 
   def search
     @customer = Customer.find(params[:customer_id])
-    @posts = @customer.post
+    @posts = @customer.posts
     @post = Post.new
     if params[:created_at] == ""
       @search_post = "日付を選択してください"
     else
       create_at = params[:created_at]
       @search_post = @posts.where(['created_at LIKE ? ', "#{create_at}%"]).count
+    end
+
+    @user = User.find(params[:user_id])
+    @books = @user.books
+    @book = Book.new
+    if params[:created_at] == ""
+      @search_book = "日付を選択してください"
+    else
+      create_at = params[:created_at]
+      @search_book = @books.where(['created_at LIKE ? ', "#{create_at}%"]).count
     end
   end
 

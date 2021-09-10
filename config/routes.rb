@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     end
     resources :customers, only: [:show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
+      get "search", to: "customers#search"
       get 'mutings', to: 'relationships#mutings', as: 'mutings'
       get 'muters', to:  'relationships#muters', as: 'muters'
       get 'unsubscribe' => 'customers#unsubscribe', as: 'confirm_unsubscribe'
