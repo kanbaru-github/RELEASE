@@ -12,7 +12,7 @@ class Admin::SessionsController < Devise::SessionsController
 
   def not_customer
     if customer_signed_in?
-      redirect_to root_path
+      redirect_to new_admin_session_path
     end
   end
 
