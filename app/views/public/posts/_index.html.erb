@@ -12,10 +12,10 @@
               <%= attachment_image_tag(post, :image, :fill, 50, 50) %>
             </div>
             <div class="modal_<%= post.id %> modal">
-            <div class="big-img_<%= post.id %> big-img">
-                <%= attachment_image_tag(post, :image, :fill, 800, 800) %>
-          </div>
-          <p class="close-btn"><a href="">✖</a></p>
+              <div class="big-img_<%= post.id %> big-img">
+                <%= attachment_image_tag(post, :image) %>
+              </div>
+              <p class="close-btn"><a href="">✖</a></p>
             </div>
           </td>
           <td class="sp_td">

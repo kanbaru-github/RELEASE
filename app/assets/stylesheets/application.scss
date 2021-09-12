@@ -379,21 +379,27 @@ a.sort {
     }
 .modal {
       position: fixed;
+      // 画面の決まった位置に要素を固定
       top: 0;
       left: 0;
       width: 100%;
       height: 100vh;
+      // vh:ビューポート（画面サイズ）に対しての割合。それに対して100%は親要素に対する割合であることに注意
       background-color: rgba(0, 0, 0, 0.8);
       display: none;
     }
+
 .big-img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform : translate(-50%,-50%);
-    transform : translate(-50%,-50%);
-    display: none;
-    }
+  position: relative;
+  height: 100vh;
+  img {
+    object-fit: contain;
+    // 画像をトリミングせず、余白を表示してボックスの中央に画像を表示する
+    width: 100%;
+    height: 100%;
+  }
+}
+
 .close-btn {
       color: #fff;
       font-size: 40px;

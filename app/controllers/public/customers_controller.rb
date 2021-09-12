@@ -12,8 +12,8 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = current_customer
-    @posts = @customer.posts
-
+    @posts = @customer.posts.page(params[:page]).reverse_order
+    # 応援数、共感数
     @customer_posts = @customer.posts
     @sympathies_count = 0
     @customer_posts.each do |post|
