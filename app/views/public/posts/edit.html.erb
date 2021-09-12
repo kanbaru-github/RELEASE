@@ -1,32 +1,35 @@
-<div class="container">
-
-<%= render 'layouts/errors', obj: @post %>
+<div class="container pt-5">
 
   <div class="row">
     <h5 class="heading">投稿編集</h5>
   </div>
 
   <%= form_with model: @post, url:post_path, local: true do |f| %>
+    <%= render 'layouts/errors', obj: @post %>
 
-    <div class="row my-5">
-        <div class="col-6 text-center"><%= f.label :IMAGE（任意）, class: "w-100" %></div>
-        <div class="col-6"><%= f.attachment_field :image %></div>
+    <div class="row mb-3">
+      <div class="mini-heading"><h5>画像(任意)</h5></div>
+    </div>
+    <div class="from-group">
+      <%= f.attachment_field :image, class: 'from-control-file' %>
     </div>
 
-    <div class="row">
-      <div class="col-6 text-center"><%= f.label :TEXT, class:"w-100" %></div>
-      <div class="col-6"><%= f.text_area :text, size:"60x10" %></div>
-  　 </div>
-
-    <div class="row">
-      <div class="col-6 text-center"><%= f.label :category, class:"w-100" %></div>
-      <div class="col-6"><%= f.collection_select :category_id, Category.all, :id, :name %></div>
+    <div class="row mb-3">
+      <div class="mini-heading"><h5>本文</h5></div>
+    </div>
+    <div class="form-group">
+      <%= f.text_area :text, size: "20x5", class: 'form-control' %>
   　</div>
 
-    <div class="row pb-2">
-      <div class="mx-auto">
-        <%= f.submit '編集内容を保存する', class:"btn btn-success" %>
-      </div>
+    <div class="row mb-3">
+      <div class="mini-heading"><h5>カテゴリー</h5></div>
+    </div>
+    <div class="form-group col-6">
+      <%= f.collection_select :category_id, Category.all, :id, :name, {:include_blank => true}, class: 'form-control' %>
+  　</div>
+
+    <div class="row pb-5">
+      <%= f.submit '編集内容を保存する', class: "btn btn-lg btn-success btn-block" %>
     </div>
 
   <% end %>

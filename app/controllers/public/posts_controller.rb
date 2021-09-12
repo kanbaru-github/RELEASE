@@ -56,7 +56,7 @@ class Public::PostsController < ApplicationController
     post = Post.find(params[:id])
     post.score = Language.get_data(post_params[:text])
     if post.update(post_params)
-      redirect_to mypage_path, notice: '更新しました！'
+      redirect_to mypage_path, notice: '投稿を更新しました！'
     else
       render :edit
     end
@@ -64,7 +64,7 @@ class Public::PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to posts_path
+    redirect_to mypage_path, notice: '投稿を削除しました！'
   end
 
   def search
