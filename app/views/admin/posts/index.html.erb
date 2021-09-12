@@ -28,10 +28,16 @@
   <div class="row my-1">
     <div class="mini-heading mr-5"><h5>並び替え</h5></div>
     <div class="ml-5 mt-4">
-      <%= link_to "共感数が多い順", admin_posts_path(sort: 'sympathy'), class: "expand" %>
+      <%= link_to admin_posts_path(sort: 'sympathy'), class: "expand sort" do %>
+        <%= image_tag 'sympathy.png', size: "20x20" %>
+        <span>共感数が多い順</span>
+      <% end %>
     </div>
     <div class="ml-5 mt-4">
-      <%= link_to "応援数が多い順", admin_posts_path(sort: 'cheer'), class: "expand" %>
+      <%= link_to admin_posts_path(sort: 'cheer'), class: "expand sort" do %>
+        <%= image_tag 'cheer.png', size: "20x20" %>
+        <span>応援数が多い順</span>
+      <% end %>
     </div>
   </div>
 
