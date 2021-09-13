@@ -74,9 +74,9 @@ ja:
         sign_up: "アカウント登録"
     sessions:
       customer:
-        signed_in: "ログインしました"
+        signed_in: "ログインしました!"
       admin:
-        signed_in: "ログインしました"
+        signed_in: "管理者ログインしました"
     shared:
       links:
         back: "戻る"

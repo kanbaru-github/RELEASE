@@ -11,6 +11,8 @@ class Public::SessionsController < Devise::SessionsController
     root_path
   end
 
+  private
+
   def reject_inactive_customer
     @customer = Customer.find_by(email: params[:customer][:email])
     if @customer
