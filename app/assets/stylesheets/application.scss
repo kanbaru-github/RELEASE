@@ -341,7 +341,8 @@ li:nth-child(3) a {
   border-radius: 50%;
   background: #fff;
 }
-a.sort {
+
+a.sort,a.link {
   // expandと差別するため
   color: #000;
   text-decoration: underline;
