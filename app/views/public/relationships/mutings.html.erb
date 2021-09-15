@@ -1,36 +1,58 @@
-<div class="container" style="min-height: 600px;">
+<div class="container muting-posts">
 
   <div class="row">
     <h5 class="heading">非表示にした投稿</h5>
   </div>
 
   <div class="row">
-    <% if @customers.exists? %>
     <table class='table'>
-      <tbody>
-      <% @posts.each do |post| %>
-        <% if current_customer.muting?(post.customer) %>
-          <tr id="post_<%= post.id %>">
-            <td><%= post.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
-            <td>
-              <div class="expand-image" data-image-url="<%= attachment_url(post, :image, :fill, 700, 700) %>">
-                <!--data:データ型を扱うことの宣言。その後ろは任意-->
-                <!--attachment_url:refileのURLを取得するメソッド-->
-                <%= attachment_image_tag(post, :image, :fill, 50, 50) %>
-              </div>
-            </td>
-            <div class="modal">
-            　　<div class="big-img"><img src="" alt=""></div>
-            　　<p class="close-btn"><a href="">✖</a></p>
-            </div>
-            <td class="text"><%= post.text.truncate(100) %></td>
-            <td><%= link_to "非表示を解除する", customer_relationships_path(post.customer.id), method: :delete, class: "btn btn-primary" %></td>
-          </tr>
+      <% if @customers.exists? %>
+        <tbody>
+          <% @posts.each do |post| %>
+            <% if current_customer.muting?(post.customer) %>
+              <tr id="post_<%= post.id %>" class="sm-tr">
+                <td>
+                  <div class="expand-image_<%= post.id %> expand-image">
+                    <%= attachment_image_tag(post, :image, :fill, 50, 50) %>
+                  </div>
+                  <div class="modal_<%= post.id %> modal">
+                    <div class="big-img_<%= post.id %> big-img">
+                      <%= attachment_image_tag(post, :image) %>
+                    </div>
+                    <p class="close-btn"><a href="">✖</a></p>
+                  </div>
+                </td>
+                <td class="sp_td">
+                  <p class="text"><%= post.text.truncate(100) %></p>
+                  <p class="sentiment-score">本文の感情分析スコア[<%= post.score %>]</p>
+                  <div class="create-time"><%= post.created_at.strftime("%Y/%m/%d %H:%M:%S") %></div>
+                  <div class="sm-tag-heading"><%= post.category.name %></div>
+                </td>
+                <td><%= link_to "非表示を解除", customer_relationships_path(post.customer.id), method: :delete, class: "btn btn-primary" %></td>
+            </tr>
+          <% end %>
         <% end %>
-      <% end %>
       </tbody>
+      <% else %>
+        <p  class="none-message mx-auto">非表示にした投稿はありません</p>
+      <% end %>
     </table>
-    <% else %>
-    <h1 class="mx-auto" style="padding: 200px;">非表示にした投稿はありません</p>
-    <% end %>
-</div>
+  </div>
+  <script>
+  // 画像拡大
+  <% @posts.present? && @posts.each do |post| %>
+  $(function() {
+    $('.expand-image_<%= post.id %>').click(function() {
+        $('.big-img_<%= post.id %>').css('display', 'block')
+      $('.modal_<%= post.id %>').fadeIn();
+      $('body,html').css('overflow-y', 'hidden');
+      return false
+    });
+    $('.close-btn').click(function() {
+      $('.modal_<%= post.id %>').fadeOut();
+      $('body,html').css('overflow-y', 'visible');
+      return false
+    });
+  })
+  <% end %>
+  </script>

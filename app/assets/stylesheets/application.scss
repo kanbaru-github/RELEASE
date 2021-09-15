@@ -86,6 +86,9 @@ footer {
  .category-edit {
     @include little();
  }
+ .muting-posts {
+    @include little();
+ }
 
 // topページ
 .top-bg {
@@ -509,7 +512,7 @@ a.sort,a.link {
   position: absolute;                /* 親要素を基準 */
 }
 @keyframes ballon-textAnime{
-  アニメーション開始から終了するまでどのようなアニメーションをするのか指定できるCSSの文法
+  // アニメーション開始から終了するまでどのようなアニメーションをするのか指定できるCSSの文法
  100%{ color : black; background:rgba(255, 127, 127, 0.75) }
   50%{ color : black; background:rgba(255, 127, 127, 0.25) }
    0%{ color : white; background:white   }
@@ -576,6 +579,11 @@ a.sort,a.link {
   color: #efa04c;
 }
 
+.none-message {
+  font-size: 32px;
+  padding: 200px 0 30px 0;
+}
+
 .control-botton {
   bottom: 20px;
   right: 20px;
@@ -622,6 +630,10 @@ a.sort,a.link {
 
   .sm-tr {
     max-width: 100%;
+  }
+
+  .none-message {
+    font-size: 24px;
   }
 
   @mixin little($color: #000, $fSize: 20px, $mHeight: 600px) {
