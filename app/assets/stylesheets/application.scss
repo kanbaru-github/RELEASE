@@ -515,6 +515,56 @@ a.sort,a.link {
    0%{ color : white; background:white   }
 }
 
+// ボタン
+.btn-success {
+  box-shadow: 0 3px 0 green;
+  position: relative;
+}
+.btn-success:active {
+  box-shadow: none;
+  top: 3px;
+}
+.btn-secondary {
+  box-shadow: 0 3px 0 #696969;
+  position: relative;
+}
+.btn-secondary:active {
+  box-shadow: none;
+  top: 3px;
+}
+.btn-danger {
+  box-shadow: 0 3px 0 #dc143c;
+  position: relative;
+}
+.btn-danger:active {
+  box-shadow: none;
+  top: 3px;
+}
+.btn-primary {
+  box-shadow: 0 3px 0 blue;
+  position: relative;
+}
+.btn-primary:active {
+  box-shadow: none;
+  top: 3px;
+}
+.btn-outline-info {
+  box-shadow: 0 5px 0 #00bfff;
+  position: relative;
+}
+.btn-outline-info:active {
+  box-shadow: none;
+  top: 5px;
+}
+.btn-outline-success {
+  box-shadow: 0 5px 0 green;
+  position: relative;
+}
+.btn-outline-success:active {
+  box-shadow: none;
+  top: 5px;
+}
+
 // 通知
 .notification {
   position: relative;
