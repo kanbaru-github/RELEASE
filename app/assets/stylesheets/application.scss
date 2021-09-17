@@ -455,6 +455,7 @@ a.sort,a.link {
 .sm-tag-heading {
   position: relative;
   display: inline-block;
+  font-size: 16px;
   height: 32px;
   margin-left: 30px;
   padding: 5px 2rem 0 3rem;
@@ -589,6 +590,9 @@ a.sort,a.link {
   right: 20px;
   left: auto;
 }
+.sentiment-score {
+  font-size: 16px;
+}
 
 .new-post { margin-bottom: 10px; }
 
@@ -617,13 +621,14 @@ a.sort,a.link {
     width: 100%;
   }
   .sm-table {
-    display: block;
+    // display: block;
     width: 100%;
     padding: 6px;
   }
 
   .text {
   word-break: break-all;
+  font-size: 16px;
   // 超えたら...と表示
   font-family: 'HanziPen SC',sans-serif;
 }

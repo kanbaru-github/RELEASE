@@ -5,7 +5,7 @@
   </div>
 
   <div class="row">
-    <table class='table'>
+    <table class='table sm-table'>
       <% if @customers.exists? %>
         <tbody>
           <% @posts.each do |post| %>
@@ -28,11 +28,18 @@
                   <div class="create-time"><%= post.created_at.strftime("%Y/%m/%d %H:%M:%S") %></div>
                   <div class="sm-tag-heading"><%= post.category.name %></div>
                 </td>
-                <td><%= link_to "非表示を解除", customer_relationships_path(post.customer.id), method: :delete, class: "btn btn-primary" %></td>
-            </tr>
+                <td>
+                  <%= button_to customer_relationships_path(post.customer.id), method: :delete do %>
+                    <div class="ballon">
+                      <%= image_tag("cancel.png", size: "30x30", class: "expand") %>
+                      <span class="ballon-text">非表示を解除する</span>
+                    </div>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
           <% end %>
-        <% end %>
-      </tbody>
+        </tbody>
       <% else %>
         <p  class="none-message mx-auto">非表示にした投稿はありません</p>
       <% end %>
