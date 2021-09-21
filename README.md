@@ -8,7 +8,7 @@
 - 共感数、応援数で並び替えができる
 - 自分の呟き数をグラフで可視化できる. [](スペース２つで改行(ピリオドみたいになる))
 
-！[投稿一覧画面](https://user-images.githubusercontent.com/84183018/134197229-4e6aa126-2a46-41fe-9e5b-05456499eb6b.png)
+![投稿一覧画面](https://user-images.githubusercontent.com/84183018/134197229-4e6aa126-2a46-41fe-9e5b-05456499eb6b.png)
 
 ### サイトテーマ
 **躊躇わず、飾らず、ありのままを呟けるSNS**
