@@ -7,9 +7,11 @@
   <div class="row">
     <table class='table sm-table'>
       <% if @customers.exists? %>
+      <!--非表示にしたユーザーがいるか-->
         <tbody>
           <% @posts.each do |post| %>
             <% if current_customer.muting?(post.customer) %>
+            <!--投稿が非表示にしたユーザーのものか-->
               <tr id="post_<%= post.id %>" class="sm-tr">
                 <td>
                   <div class="expand-image_<%= post.id %> expand-image">
