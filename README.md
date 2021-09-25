@@ -32,7 +32,7 @@
 呟いた人ではなく呟きそのものを見て欲しいという観点から、ユーザー同士が繋がる機能（フォロー機能等）は実装しない見込みです。
 自分が思っていること（呟き）を客観的にどう感じるのかノーリスクで簡単に確認することができます。
 
-[![Image from Gyazo](https://i.gyazo.com/1851dd396d0110c42e3edb8c151ff598.gif)](https://gyazo.com/1851dd396d0110c42e3edb8c151ff598)
+![1851dd396d0110c42e3edb8c151ff598](https://user-images.githubusercontent.com/84183018/134764669-63ae1f22-f5f2-45ee-be5e-fcd4621856d9.gif)
 
 ## 設計書
 - [ER図](https://app.diagrams.net/#G1Jd-rg29Rop9cNNsN64iC1J2JTriy68D8)
