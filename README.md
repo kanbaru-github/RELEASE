@@ -8,6 +8,7 @@
 - 共感数、応援数で並び替えができる
 - 自分の投稿数をグラフで可視化できる. [](スペース２つで改行(ピリオドみたいになる))
 
+![トップページ](https://user-images.githubusercontent.com/84183018/134800018-8e93b761-f810-459d-b9d1-72a99b695ff7.png)
 ![投稿一覧画面](https://user-images.githubusercontent.com/84183018/134270154-5fa83cab-8ac3-497f-8d85-60d59208816f.png)
 
 ### サイトテーマ
@@ -40,6 +41,9 @@
 - [ワイヤーフレーム](https://app.diagrams.net/#G1a59JGzHrP5RTJXfoelzIiGPC_p-sotZH)
 - [テーブル定義書](https://docs.google.com/spreadsheets/d/103j_yqMhp5Eek5g7XU9HqTWFHqMS3dVDD85aAfrw__4/edit#gid=0)
 - [アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1dniXNADwXerGMXdk8vQyJR2q5UnP4J4-8zGfhrj3H1c/edit#gid=2133469642)
+
+##　進捗管理
+[進捗管理シート(Work Breakdown Structure：作業分解構成図)](https://docs.google.com/spreadsheets/d/162cT8IZPkrt6_n33kMrDrRgcpsUCUDfXeTuNeKYE3AE/edit#gid=1773513600)
 
 ## チャレンジ要素一覧
 [チャレンジ要素一覧及び実装難易度](https://docs.google.com/spreadsheets/d/1CX1yBqZl-60JsZaFbezGSph6PspYy6W37kY8DFFGFJ8/edit#gid=0)
