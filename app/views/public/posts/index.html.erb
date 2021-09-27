@@ -10,8 +10,13 @@
     <div class="mini-heading mr-4"><h5>カテゴリー検索</h5></div>
   </div>
   <div class="row mt-2">
-    <% @categories.each do |category| %>
-			<div class="category-seach tag-heading expand"><%= link_to category.name, posts_path(category_id: category.id), class: 'text-dark' %></div>
+    <%# @categories.each do |category| %>
+			<!--<div class="category-seach tag-heading expand"><%#= link_to category.name, posts_path(category_id: category.id), class: 'text-dark' %></div>-->
+		<%# end %>
+		<% @categories.each do |category| %>
+			<div class="category-seach tag-heading expand"><%= link_to category.name, posts_path(emotions: category.name), class: 'text-dark' %></div>
+			<!--paramsでemotionsを渡して、category.nameを参照している-->
+			<!--()の中身は自分で自由に設定できる-->
 		<% end %>
   </div>
 
@@ -59,3 +64,4 @@
     </div>
   </div>
 </div>
+
