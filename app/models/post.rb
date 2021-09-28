@@ -1,12 +1,12 @@
 class Post < ApplicationRecord
-  
+
   attachment :image
 
   belongs_to :customer
   belongs_to :category
 
   validates :text, presence: true
-  validates :category, presence: true
+  validates :category#, presence: true
 
   has_many :sympathies, dependent: :destroy
   def sympathied_by?(customer)
