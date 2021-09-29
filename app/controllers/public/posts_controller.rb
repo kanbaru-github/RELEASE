@@ -62,6 +62,13 @@ class Public::PostsController < ApplicationController
   def update
     post = Post.find(params[:id])
     post.score = Language.get_data(post_params[:text])
+    if post.score > 0.3
+      post.emotions = "ポジティブ"
+    elsif post.score < -0.3
+      post.emotions = "ネガティブ"
+    else
+      post.emotions = "その他"
+    end
     if post.update(post_params)
       redirect_to mypage_path, notice: '投稿を更新しました！'
     else
@@ -82,7 +89,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:text, :category_id, :sympathies, :cheers, :image)
+    params.require(:post).permit(:text, :sympathies, :cheers, :image)
   end
 
   def ensure_correct_customer

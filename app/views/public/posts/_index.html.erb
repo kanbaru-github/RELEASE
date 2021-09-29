@@ -22,9 +22,8 @@
             <p class="text"><%= safe_join(post.text.truncate(150).split("\n"),tag(:br)) %></p>
             <!--truncate():文字数制限-->
             <!--safe_join(@text.split("\n"),tag(:br))で改行とスペー図を反映-->
-            <p class="sentiment-score">本文の感情分析スコア[<%= post.emotions %>]</p>
+            <div class="sm-tag-heading"><%= post.emotions %></div>
             <div class="create-time"><%= post.created_at.strftime("%Y/%m/%d %H:%M:%S") %></div>
-            <div class="sm-tag-heading"><%= post.category.name %></div>
           </td>
           <% if post.customer == current_customer %>
             <td class="wrapper_button">

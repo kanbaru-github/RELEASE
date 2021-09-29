@@ -3,10 +3,10 @@ class Post < ApplicationRecord
   attachment :image
 
   belongs_to :customer
-  belongs_to :category
+  belongs_to :category, optional: true
+  # optional: true :nill(空)を許す
 
   validates :text, presence: true
-  validates :category#, presence: true
 
   has_many :sympathies, dependent: :destroy
   def sympathied_by?(customer)
@@ -38,6 +38,7 @@ class Post < ApplicationRecord
 
   # 通知機能
   has_many :notifications, dependent: :destroy
+
   # 共感
   def create_notification_sympathy!(current_customer)
     # すでに「共感」されているか検索
