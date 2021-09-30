@@ -3,9 +3,8 @@ class Admin::PostsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    if params[:category_id]
-      @category = Category.find(params[:category_id])
-      all_posts = @category.posts
+    if params[:emotions]
+      all_posts = Post.where(emotions: params[:emotions])
     else
       all_posts = Post.includes(:category)
     end
