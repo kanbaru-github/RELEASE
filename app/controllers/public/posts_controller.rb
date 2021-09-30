@@ -4,10 +4,9 @@ class Public::PostsController < ApplicationController
   before_action :ensure_correct_customer, only: [:edit, :update, :destroy]
 
   def index
-    if params[:category_id]
-      # カテゴリー検索したら
-      @category = Category.find(params[:category_id])
-      all_posts = @category.posts
+    # カテゴリー検索をしたら
+    if params[:emotions]
+      all_posts = Post.where(emotions: params[:emotions])
     else
       all_posts = Post.includes(:category)
     end
@@ -40,6 +39,14 @@ class Public::PostsController < ApplicationController
     post.customer_id = current_customer.id
     # API側から返ってきた値をもとにスコアを作成
     post.score = Language.get_data(post_params[:text])
+    # 数値をもとにタグ付け
+    if post.score > 0.3
+      post.emotions = "ポジティブ"
+    elsif post.score < -0.3
+      post.emotions = "ネガティブ"
+    else
+      post.emotions = "その他"
+    end
     if post.save!
       redirect_to mypage_path, notice: '投稿しました！'
     else
@@ -55,6 +62,13 @@ class Public::PostsController < ApplicationController
   def update
     post = Post.find(params[:id])
     post.score = Language.get_data(post_params[:text])
+    if post.score > 0.3
+      post.emotions = "ポジティブ"
+    elsif post.score < -0.3
+      post.emotions = "ネガティブ"
+    else
+      post.emotions = "その他"
+    end
     if post.update(post_params)
       redirect_to mypage_path, notice: '投稿を更新しました！'
     else
@@ -75,7 +89,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:text, :category_id, :sympathies, :cheers, :image)
+    params.require(:post).permit(:text, :sympathies, :cheers, :image)
   end
 
   def ensure_correct_customer
