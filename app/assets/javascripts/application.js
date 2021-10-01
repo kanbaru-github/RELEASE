@@ -33,11 +33,28 @@ $(document).on('turbolinks:load',function(){
   });
 
   // トップページ
-$(function() {
-  // 一旦hide()で隠してフェードインさせる
-  $('.top-message').hide().fadeIn(1500);
-  // 1500ミリ秒
-});
+  $(function() {
+    // 一旦hide()で隠してフェードインさせる
+    $('.top-message').hide().fadeIn(1500);
+    // 1500ミリ秒
+  });
+
+  // タブメニュー
+  $(function() {
+      // ↓タブをクリックした時の処理↓
+      $('.tab').click(function(){
+          // ↓現在アクティブなタブを切り替え↓
+          $('.tab-active').removeClass('tab-active');
+          // ↓タブをアクティブにする↓
+          $(this).addClass('tab-active');
+          // ↓現在アクティブなタブの中身を非表示
+          $('.box-show').removeClass('box-show');
+          // ↓クリックしたタブから順番を取得↓
+          const index = $(this).index();
+          // ↓クリックしたタブと同じ順番のコンテンツを表示↓
+          $('.tabbox').eq(index).addClass('box-show');
+      });
+  });
 
 });
 
@@ -79,19 +96,32 @@ $('.search__form__input').on('keyup', function(e){
   });
 });
 
-// タブメニュー
-$(function() {
-    // ↓タブをクリックした時の処理↓
-    $('.tab').click(function(){
-        // ↓現在アクティブなタブを切り替え↓
-        $('.tab-active').removeClass('tab-active');
-        // ↓タブをアクティブにする↓
-        $(this).addClass('tab-active');
-        // ↓現在アクティブなタブの中身を非表示
-        $('.box-show').removeClass('box-show');
-        // ↓クリックしたタブから順番を取得↓
-        const index = $(this).index();
-        // ↓クリックしたタブと同じ順番のコンテンツを表示↓
-        $('.tabbox').eq(index).addClass('box-show');
-    });
+// 落ち葉をランダムサイズで生成してDOMに追加する
+window.addEventListener('DOMContentLoaded', ()=> {
+  // コンテナを指定
+  const container = document.querySelector('.leaves-container');
+
+  // 葉っぱを生成する関数
+  const createLeaf = (leafClass, minSizeVal, maxSizeVal) => {
+    const leafEl = document.createElement('span');
+    leafEl.className = `leaf ${leafClass}`;
+    const minSize = minSizeVal;
+    const maxSize = maxSizeVal;
+    const size = Math.random() * (maxSize + 1 - minSize) + minSize;
+    leafEl.style.width = `${size}px`;
+    leafEl.style.height = `${size}px`;
+    leafEl.style.left = Math.random() * 100 + '%';
+    container.appendChild(leafEl);
+
+    // 一定時間が経てば葉っぱを消す
+    setTimeout(() => {
+      leafEl.remove();
+    }, 8000);
+  }
+
+  // 葉っぱを生成する間隔をミリ秒で指定する
+  // createLeafの引数には、'クラス名', '最小サイズ', '最大サイズ'を渡す
+  setInterval(createLeaf.bind(this, 'leaf-1', 30, 50), 1000);
+  setInterval(createLeaf.bind(this, 'leaf-2', 30, 50), 1000);
+  setInterval(createLeaf.bind(this, 'leaf-3', 30, 50), 1000);
 });

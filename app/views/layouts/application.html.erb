@@ -30,18 +30,18 @@
     </header>
 
     <main>
-      <%= yield %>
-      <div class="fixed-bottom control-botton">
-      <% if customer_signed_in? %>
-        <div class="new-post">
-          <%= link_to image_tag("new.png", size:"50x50"), new_post_path, class: "expand" %>
+      <div class="leaves-container">
+        <%= yield %>
+        <div class="fixed-bottom control-botton">
+          <% if customer_signed_in? %>
+            <div class="new-post">
+              <%= link_to image_tag("new.png", size:"50x50"), new_post_path, class: "expand" %>
+            </div>
+          <% end %>
+          <a href="#">
+            <%= image_tag("pagetop.png", size:"50x50", class: "expand") %>
+          </a>
         </div>
-      <% end %>
-      <div class="">
-        <a href="#">
-          <%= image_tag("pagetop.png", size:"50x50", class: "expand") %>
-        </a>
-      </div>
       </div>
     </main>
 
