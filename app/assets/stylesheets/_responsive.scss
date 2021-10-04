@@ -1,0 +1,64 @@
+@media screen and (max-width: 768px) {
+  .sp_td  { width: 230px; }
+
+  .top-bg {
+    min-height: 600px;
+  }
+  .top-message {
+    padding: 40px;
+    font-size: 36px;
+  }
+
+  .explanation {
+  margin: 50px 40px;
+  }
+
+  .bg-video1 p {
+    font-size: 80px;
+  }
+  .bg-video2 p {
+    font-size: 90px;
+  }
+
+  .sm-tbody {
+    display: block;
+    width: 100%;
+  }
+  .sm-table {
+    // display: block;
+    width: 100%;
+    padding: 6px;
+  }
+
+  .text {
+  word-break: break-all;
+  // 超えたら...と表示
+  font-size: 16px;
+  font-family: 'HanziPen SC',sans-serif;
+}
+
+  .sm-tr {
+    max-width: 100%;
+  }
+
+  .none-message {
+    font-size: 24px;
+  }
+
+  @mixin little($color: #000, $fSize: 20px, $mHeight: 600px) {
+   color: $color;
+   font-size: $fSize;
+   min-height: $mHeight;
+ }
+ .test {
+   @include little(white, 20px);
+ }
+ .customer-edit {
+   @include little();
+ }
+ .category-edit {
+   @include little();
+ }
+
+}
+

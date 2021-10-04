@@ -1,5 +1,8 @@
 <div class="top-bg">
   <div class="container">
+    <% if flash[:notice] %>
+      <div class="notice"><%= flash[:notice] %></div>
+    <% end %>
     <div class="row">
       <div class="mx-auto">
         <div class="top-message">

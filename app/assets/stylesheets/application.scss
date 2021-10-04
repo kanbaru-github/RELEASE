@@ -14,8 +14,12 @@
  *= require_self
  */
 
+// bootstrap読み込み
 @import "bootstrap";
+// 手書き文字読み込み
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+// 別ファイル読み込み
+@import url("_responsive.scss");
 
 * {
   margin: 0;
@@ -754,19 +758,19 @@ a.sort,a.link {
   }
 
   @mixin little($color: #000, $fSize: 20px, $mHeight: 600px) {
-   color: $color;
-   font-size: $fSize;
-   min-height: $mHeight;
- }
- .test {
-   @include little(white, 20px);
- }
- .customer-edit {
-   @include little();
- }
- .category-edit {
-   @include little();
- }
+  color: $color;
+  font-size: $fSize;
+  min-height: $mHeight;
+}
+.test {
+  @include little(white, 20px);
+}
+.customer-edit {
+  @include little();
+}
+.category-edit {
+  @include little();
+}
 
 }
 

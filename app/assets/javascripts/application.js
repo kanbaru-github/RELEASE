@@ -125,3 +125,4 @@ window.addEventListener('DOMContentLoaded', ()=> {
   setInterval(createLeaf.bind(this, 'leaf-2', 30, 50), 1000);
   setInterval(createLeaf.bind(this, 'leaf-3', 30, 50), 1000);
 });
+
