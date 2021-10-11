@@ -25,10 +25,9 @@
                   </div>
                 </td>
                 <td class="sp_td">
-                  <p class="text"><%= post.text.truncate(100) %></p>
-                  <p class="sentiment-score">本文の感情分析スコア[<%= post.score %>]</p>
+                  <p class="text"><%= safe_join(post.text.truncate(150).split("\n"),tag(:br)) %></p>
+                  <div class="sm-tag-heading"><%= post.emotions %></div>
                   <div class="create-time"><%= post.created_at.strftime("%Y/%m/%d %H:%M:%S") %></div>
-                  <div class="sm-tag-heading"><%= post.category.name %></div>
                 </td>
                 <td>
                   <%= button_to customer_relationships_path(post.customer.id), method: :delete do %>
