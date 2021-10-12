@@ -1,6 +1,6 @@
 # README
 
-URL: http://54.95.110.2/　         
+URL: http://54.95.110.2           
 会員ユーザーアカウント: presen@test.com
 
 ## サイト概要
