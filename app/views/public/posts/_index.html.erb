@@ -3,7 +3,7 @@
   <% if posts.present? %>
     <% posts.each do |post| %>
       <% unless current_customer.muting?(post.customer) %>
-      <!--ミュートにしたユーザーが投稿したものを非表示に-->
+      <!--非表示にした投稿を投稿したユーザーが投稿したものを非表示に-->
         <tr id="post_<%= post.id %>" class="sm-tr">
           <td>
             <div class="expand-image_<%= post.id %> expand-image">
